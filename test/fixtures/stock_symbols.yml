@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fake:
+  symbol: FAKE
+  company_name: Fake Company
+  industry: auto
+  sector: manufacturing
+
+testr:
+  symbol: TESTR
+  company_name: Test Company
+  industry: computer
+  sector: hardware
