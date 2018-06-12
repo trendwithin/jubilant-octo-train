@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "symbol": "BGI",
+    "company_name": "Birks Group",
+    "sector_id": 21,
+    "industry_id": 54,
+    "created_at": "2018-06-12 10:15:45 UTC",
+    "updated_at": "2018-06-12 10:15:45 UTC"
+  },
+  {
+    "id": 2,
+    "symbol": "ADSW",
+    "company_name": "Advanced Disposal Services",
+    "sector_id": 30,
+    "industry_id": 18,
+    "created_at": "2018-06-12 10:15:45 UTC",
+    "updated_at": "2018-06-12 10:15:45 UTC"
+  }
+]
