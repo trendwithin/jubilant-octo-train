@@ -43,6 +43,13 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+group :test do
+ gem 'guard', '~> 2.14'
+ gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
+ gem 'terminal-notifier', '~> 2.0'
+ gem 'terminal-notifier-guard', '~> 1.7'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
