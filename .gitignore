@@ -23,5 +23,8 @@
 yarn-debug.log*
 .yarn-integrity
 
-#Ignore files from data_files 
+#Ignore files from data_files
 /db/data_files
+
+# Ignore Spring files.
+/spring/*.pid
