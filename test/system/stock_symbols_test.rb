@@ -20,4 +20,12 @@ class StockSymbolsTest < ApplicationSystemTestCase
     find('input[name="commit"]').click
     assert_content 'New Stock Symbol Successfully Added.'
   end
+
+  test '#create returns listed entry' do
+    visit new_stock_symbol_path
+    fill_in 'stock_symbol[symbol]', with: 'ATEST'
+    fill_in 'stock_symbol[company_name]', with: 'Testing ATEST'
+    find('input[name="commit"]').click
+    assert_current_path new_stock_symbol_path
+  end
 end

@@ -12,7 +12,7 @@ class StockSymbolsController < ApplicationController
     @stock_symbol = StockSymbol.new(stock_symbol_params)
     respond_to do |format|
       if @stock_symbol.save
-        format.html { redirect_to @stock_symbol, notice: 'New Stock Symbol Successfully Added.'}
+        format.html { redirect_to new_stock_symbol_path, notice: 'New Stock Symbol Successfully Added.'}
       else
         @sectors = Sector.all
         @industries = Industry.all
