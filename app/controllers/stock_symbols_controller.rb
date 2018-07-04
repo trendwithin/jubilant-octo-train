@@ -1,4 +1,5 @@
 class StockSymbolsController < ApplicationController
+
   def new
     @stock_symbol = StockSymbol.new
     @sectors = Sector.all

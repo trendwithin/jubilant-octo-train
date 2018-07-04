@@ -19,13 +19,17 @@ class StockSymbolsTest < ApplicationSystemTestCase
     fill_in 'stock_symbol[company_name]', with: 'One Two Three'
     find('input[name="commit"]').click
     assert_content 'New Stock Symbol Successfully Added.'
+    assert_current_path new_stock_symbol_path
   end
 
-  test '#create returns listed entry' do
+  test '#create fetches historical data' do
+    refute StockSymbol.find_by_symbol('WB')
     visit new_stock_symbol_path
-    fill_in 'stock_symbol[symbol]', with: 'ATEST'
-    fill_in 'stock_symbol[company_name]', with: 'Testing ATEST'
+    fill_in 'stock_symbol[symbol]', with: 'WB'
+    fill_in 'stock_symbol[company_name]', with: 'Weibo Corp'
     find('input[name="commit"]').click
+    assert_content 'New Stock Symbol Successfully Added.'
     assert_current_path new_stock_symbol_path
+    assert StockSymbol.find_by_symbol('WB')
   end
 end
