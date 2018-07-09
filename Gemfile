@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Project Specific Gems
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'mechanize', '~> 2.7', '>= 2.7.5'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -48,6 +52,8 @@ group :test do
  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
  gem 'terminal-notifier', '~> 2.0'
  gem 'terminal-notifier-guard', '~> 1.7'
+ gem 'vcr', '~> 4.0'
+ gem 'webmock', '~> 3.3'
 end
 
 group :development do

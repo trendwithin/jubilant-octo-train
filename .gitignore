@@ -28,3 +28,6 @@ yarn-debug.log*
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Ignore application configuration
+/config/application.yml

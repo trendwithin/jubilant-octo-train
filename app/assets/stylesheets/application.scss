@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ 
+.centered {
+  text-align: center;
+}
+#stock_symbol_form {
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+ input, textarea, select, option {
+   border: solid thin #888;
+   box-sizing: border-box;
+   font-size: 1em;
+   padding: 0.5em;
+   width: 100%
+ }

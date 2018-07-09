@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://marketdata.websol.barchart.com/getQuote.json?apikey=<REDACTED>&symbols=FAKE,TESTR,AAPL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mechanize/2.7.5 Ruby/2.5.0p0 (http://github.com/sparklemotion/mechanize/)
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Host:
+      - marketdata.websol.barchart.com
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '300'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Encoding:
+      - gzip
+      Content-Language:
+      - en
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 09 Jul 2018 21:31:28 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      P3p:
+      - CP="ALL DSP COR CURa ADMa OUR STP"
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.2.34 (Amazon) mod_ssl/2.2.34 OpenSSL/1.0.2k-fips PHP/5.3.29
+      Set-Cookie:
+      - AWSELB=6B2FE744747259872F56414CA44A91A38DFFBA96C1DF5738C2FEB3B278A352EA56B06399AA27B2A4204D9939C7F5FDC4C0A9A661ECF8A4EF579542EA4A483785F5275C67;PATH=/
+      - PHPSESSID=2f50f7cd9062544628823317c17afbe7; path=/
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.3.29
+      X-Websol-Id:
+      - 54.166.108.55
+      Content-Length:
+      - '267'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA3VOS2uDQBD+K2XOq+wqGvUm6aVQSkpyKz1s16kK+5DdNW0I/vdONYReepvvPVcIUcY5QHMF5TqEJuOcgcEQZE8IjrNSBFJYGHgMs47kfbtCuJgPp8nQtodnYIDfapB2jby0x8f2lTgrzS9up0njw5NVRHXysl9noCYU0J/Rn0aai9JMxGZcVAnfJbw+ibLJRcOzhBcN5+Q2W7CjU8sQD35UhEXN06JiEL3s8L+qXcMrKrlXWYz727tZWgoGE3qF9k6KNK8ZzHaMt28zCrkJLUlVnRYMhrEftvGSxrX72pScgdIu/PnrU8ueCgIVnJ2ezSqVghdltbwvPyfu8z6AAQAA
+    http_version: 
+  recorded_at: Mon, 09 Jul 2018 21:31:29 GMT
+recorded_with: VCR 4.0.0
