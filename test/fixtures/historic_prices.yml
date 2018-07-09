@@ -6,4 +6,14 @@ price:
   close: 68.84
   volume: 54000
   net_change: 0.71
-  stock_symbol: fake 
+  stock_symbol: fake
+
+aapl_price:
+  market_close_date: 2017-05-10
+  open: 68.12
+  high: 68.84
+  low: 68.12
+  close: 68.84
+  volume: 54000
+  net_change: 0.71
+  stock_symbol: aapl

@@ -11,3 +11,9 @@ testr:
   company_name: Test Company
   industry: computer
   sector: hardware
+
+aapl:
+  symbol: AAPL
+  company_name: Apple Computers
+  industry: computer
+  sector: hardward
