@@ -39,6 +39,49 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: daily_high_lows; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.daily_high_lows (
+    id bigint NOT NULL,
+    one_month_high integer NOT NULL,
+    one_month_low integer NOT NULL,
+    three_month_high integer NOT NULL,
+    three_month_low integer NOT NULL,
+    six_month_high integer NOT NULL,
+    six_month_low integer NOT NULL,
+    fifty_two_week_high integer NOT NULL,
+    fifty_two_week_low integer NOT NULL,
+    all_time_high integer NOT NULL,
+    all_time_low integer NOT NULL,
+    year_to_date_high integer NOT NULL,
+    year_to_date_low integer NOT NULL,
+    market_close_date date NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: daily_high_lows_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.daily_high_lows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: daily_high_lows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.daily_high_lows_id_seq OWNED BY public.daily_high_lows.id;
+
+
+--
 -- Name: historic_prices; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -186,6 +229,13 @@ ALTER SEQUENCE public.stock_symbols_id_seq OWNED BY public.stock_symbols.id;
 
 
 --
+-- Name: daily_high_lows id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.daily_high_lows ALTER COLUMN id SET DEFAULT nextval('public.daily_high_lows_id_seq'::regclass);
+
+
+--
 -- Name: historic_prices id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -219,6 +269,14 @@ ALTER TABLE ONLY public.stock_symbols ALTER COLUMN id SET DEFAULT nextval('publi
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: daily_high_lows daily_high_lows_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.daily_high_lows
+    ADD CONSTRAINT daily_high_lows_pkey PRIMARY KEY (id);
 
 
 --
@@ -262,6 +320,13 @@ ALTER TABLE ONLY public.stock_symbols
 
 
 --
+-- Name: index_daily_high_lows_on_market_close_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_daily_high_lows_on_market_close_date ON public.daily_high_lows USING btree (market_close_date);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -269,6 +334,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20180605123924'),
-('20180606230119');
+('20180606230119'),
+('20180710172534');
 
 

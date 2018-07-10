@@ -1,0 +1,82 @@
+<%= form_with(model: daily_high_low, local: true) do |form| %>
+  <% if daily_high_low.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(daily_high_low.errors.count, "error") %> prohibited this daily_high_low from being saved:</h2>
+
+      <ul>
+      <% daily_high_low.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :one_month_high %>
+    <%= form.number_field :one_month_high, id: :daily_high_low_one_month_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :one_month_low %>
+    <%= form.number_field :one_month_low, id: :daily_high_low_one_month_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :three_month_high %>
+    <%= form.number_field :three_month_high, id: :daily_high_low_three_month_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :three_month_low %>
+    <%= form.number_field :three_month_low, id: :daily_high_low_three_month_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :six_month_high %>
+    <%= form.number_field :six_month_high, id: :daily_high_low_six_month_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :six_month_low %>
+    <%= form.number_field :six_month_low, id: :daily_high_low_six_month_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fifty_two_week_high %>
+    <%= form.number_field :fifty_two_week_high, id: :daily_high_low_fifty_two_week_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fifty_two_week_low %>
+    <%= form.number_field :fifty_two_week_low, id: :daily_high_low_fifty_two_week_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :all_time_high %>
+    <%= form.number_field :all_time_high, id: :daily_high_low_all_time_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :all_time_low %>
+    <%= form.number_field :all_time_low, id: :daily_high_low_all_time_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_to_date_high %>
+    <%= form.number_field :year_to_date_high, id: :daily_high_low_year_to_date_high %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_to_date_low %>
+    <%= form.number_field :year_to_date_low, id: :daily_high_low_year_to_date_low %>
+  </div>
+
+  <div class="field">
+    <%= form.label :market_close_date %>
+    <%= form.date_select :market_close_date, id: :daily_high_low_market_close_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

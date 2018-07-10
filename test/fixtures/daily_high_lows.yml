@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  one_month_high: 1
+  one_month_low: 1
+  three_month_high: 1
+  three_month_low: 1
+  six_month_high: 1
+  six_month_low: 1
+  fifty_two_week_high: 1
+  fifty_two_week_low: 1
+  all_time_high: 1
+  all_time_low: 1
+  year_to_date_high: 1
+  year_to_date_low: 1
+  market_close_date: 2018-07-08
+
+two:
+  one_month_high: 1
+  one_month_low: 1
+  three_month_high: 1
+  three_month_low: 1
+  six_month_high: 1
+  six_month_low: 1
+  fifty_two_week_high: 1
+  fifty_two_week_low: 1
+  all_time_high: 1
+  all_time_low: 1
+  year_to_date_high: 1
+  year_to_date_low: 1
+  market_close_date: 2018-07-09
