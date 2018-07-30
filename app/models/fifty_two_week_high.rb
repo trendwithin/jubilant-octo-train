@@ -1,0 +1,2 @@
+class FiftyTwoWeekHigh < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AllTimeLow < ApplicationRecord
+end

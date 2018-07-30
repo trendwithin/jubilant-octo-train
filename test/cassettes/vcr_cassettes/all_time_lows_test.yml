@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://core-api.barchart.com/v1/quotes/get?fields=symbol,symbolName,lastPrice,priceChange,percentChange,highPrice,lowPrice,volume,tradeTime,symbolCode,symbolType,hasOptions&hasOptions=true&lists=stocks.highslows.current.lows.alltime.us&meta=field.shortName,field.type,field.description&raw=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mechanize/2.7.5 Ruby/2.5.0p0 (http://github.com/sparklemotion/mechanize/)
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Host:
+      - core-api.barchart.com
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '300'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Jul 2018 19:26:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/7.1.15
+      Cache-Control:
+      - no-cache, private
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '59'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Accept, Content-Type
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Mon, 16 Jul 2018 19:26:08 GMT
+recorded_with: VCR 4.0.0
