@@ -27,6 +27,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: all_time_highs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.all_time_highs (
+    id bigint NOT NULL,
+    symbol text,
+    market_close_date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: all_time_highs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.all_time_highs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: all_time_highs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.all_time_highs_id_seq OWNED BY public.all_time_highs.id;
+
+
+--
 -- Name: all_time_lows; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -293,6 +325,13 @@ ALTER SEQUENCE public.stock_symbols_id_seq OWNED BY public.stock_symbols.id;
 
 
 --
+-- Name: all_time_highs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.all_time_highs ALTER COLUMN id SET DEFAULT nextval('public.all_time_highs_id_seq'::regclass);
+
+
+--
 -- Name: all_time_lows id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -339,6 +378,14 @@ ALTER TABLE ONLY public.sectors ALTER COLUMN id SET DEFAULT nextval('public.sect
 --
 
 ALTER TABLE ONLY public.stock_symbols ALTER COLUMN id SET DEFAULT nextval('public.stock_symbols_id_seq'::regclass);
+
+
+--
+-- Name: all_time_highs all_time_highs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.all_time_highs
+    ADD CONSTRAINT all_time_highs_pkey PRIMARY KEY (id);
 
 
 --
@@ -414,6 +461,13 @@ ALTER TABLE ONLY public.stock_symbols
 
 
 --
+-- Name: index_all_time_highs_on_symbol_and_market_close_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_all_time_highs_on_symbol_and_market_close_date ON public.all_time_highs USING btree (symbol, market_close_date);
+
+
+--
 -- Name: index_all_time_lows_on_symbol_and_market_close_date; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -445,6 +499,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180606230119'),
 ('20180710172534'),
 ('20180712185902'),
-('20180716194259');
+('20180716194259'),
+('20180717171000');
 
 

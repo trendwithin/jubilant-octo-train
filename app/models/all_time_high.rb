@@ -1,0 +1,2 @@
+class AllTimeHigh < ApplicationRecord
+end
