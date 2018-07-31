@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://marketdata.websol.barchart.com/getHistory.json?apikey=<REDACTED>&startDate=20180601000000&symbol=Z&type=daily
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mechanize/2.7.5 Ruby/2.5.0p0 (http://github.com/sparklemotion/mechanize/)
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Host:
+      - marketdata.websol.barchart.com
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '300'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Encoding:
+      - gzip
+      Content-Language:
+      - en
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 31 Jul 2018 17:17:12 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      P3p:
+      - CP="ALL DSP COR CURa ADMa OUR STP"
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.2.34 (Amazon) mod_ssl/2.2.34 OpenSSL/1.0.2k-fips PHP/5.3.29
+      Set-Cookie:
+      - AWSELB=6B2FE744747259872F56414CA44A91A38DFFBA96E4E4DC7654FB04785DE95AC21D3FB0C689E01A1E78CA87146318A026EB0BC385B1270D90495A8F374A1977E167C43DC2;PATH=/
+      - PHPSESSID=39a2661b59f3921503d71e8ff655a027; path=/
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.3.29
+      X-Websol-Id:
+      - 54.87.48.165
+      Content-Length:
+      - '1129'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA62ZT08kNxDFv0ufZ1pV5T9lz3kvOSenRDlM2BGLNDCrnZlEK8R3j7th7GcUpBKOhBCtNvCj7Hr1nnmezpf95Xqeds/T3enrYdoJ0WZ6PJzP+/vyNP16vbsrD/P0spl+HM7X46Ws/eN5Ov98/Ot0LAt+nzbT5aF8w2X/+L08C3HaUtwS/0a0Wz+25MvnZd2P/deHp/sv+5/dwvLm9P3wNO1CnlPeTN8e7r/Vh+Ppn/J1mp1uprvj6XxY35DbTH+fjtfH8shRNS7Uyw/55elyKJyXafd0PR5fNhZSbyX1SBr9jTTSLNJIQ0BS15O6IdJgJQ0fkPIs8UZaXkglLX9DQtLAKYyQRitprKQFjuruR5mdfyN9e3EjlVkYSMX7oZqqlVQb6StCJQ2VlGbvGinPQf5H0mQlTVjT5QBW0qitpsxYU4+7z5LdAClbe58ZaxorqJsl3UBLrQOCxtBAc5I8wilWTkHOHCpoWJXoBhpjA/Xr+a0VTUQj/cTOSuoa6StCJfW1pG5OsPduzhlIfc48QmpVU/ZIGhhIoaSKmx9WHaik6kpJB0itaspNTd8QKmltp1Lr3JEGBdKcSUdIrZ3P0Plu5lRJ/Zy1FRUmVHmjCWuqOtRR2UqakTQnqOmiS3X7HZ5T6kiFR86pkJFUqCNlqGnS1lGZsaaLEjQ11TiipmJVU2HsKG1yGproL5vdxlNCifJEQ5hWMRXB8ZQ9jCfv2iCNeEp59lhRXSRqANXa+RIQVcFG5dBslM9oozTgyBcZkX2x2igBG1UQ0PAFbjVlHzrH15uToXay2ihRJIV24jmBi+qcKUophSHRF6uUSpPSoKtTrrHE1ViiM3j9tK66gbosQ15frEoqTUkLQgoIqg2UulRC0E1RWD4/nXRLtsZfFiIpB8hPQVt+4u6MCrZT4phGSG0ualmIhzQmOKR1Oi35KXak4E1KfPIjoDaBUgx6CwGCkjTQkD9qe3ZpqKI2gdIu55WKYs7z/9320kXnRAOutPx6WzctC9HpB8xOGWZTxtEUUZ+U9POKr1u22ZJlYTdFFUAZFD8y7nyGeZ9YPi+kas142mU8mp3gEIW7CNGupAga3cjWG0OediGP14RU06hz4KB8Z0lBSLPjkaY3ZjztMt4rQQX1vnlncthMCe9Mis/7vMsvANau54jdlLGk9R5qyc0eSUFGk/dDZ9RmSpaFyAk3JiUpA6fr0kgAecp5IDapNeDpu4AXgLOZ/KKo3YVJxllPNNRLVhnlTkaTx17Cje84BefngBtVa7jTd+GOUtfzEJtSRHXCiqryiHkSa9OLw4oSHlFKDTT3Ww+TKfiBG6jy+233OstClNGIoAwj1KcPLUkayExqDXf6LtwRXujCAE1dQbv/O0gaiCJqDXfahbt397kOAnN38ZyxoiR56IxaZRSzHa9BuI1636IIN5dXnvD6yZEfMvjO2veu9f2CUDNT+bomkYA6Wp4U9Ekoh48E6s+XfwGu/On/VhsAAA==
+    http_version: 
+  recorded_at: Tue, 31 Jul 2018 17:17:05 GMT
+recorded_with: VCR 4.0.0
