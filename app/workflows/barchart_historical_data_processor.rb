@@ -1,4 +1,4 @@
-class BarchartHistoricalData
+class BarchartHistoricalDataProcessor
   attr_reader :historic_data
 
   def initialize historic_data

@@ -1,30 +1,39 @@
 class FetchHistoricalData
   attr_accessor :api_connection
-  attr_reader :symbol, :url
+  attr_reader :symbol, :url, :start_date
 
-  def initialize symbol
-    @url = "https://marketdata.websol.barchart.com/getHistory.json?apikey=" +
-    ENV['barchart_api_key'] + "&symbol=#{symbol}&type=daily&startDate=20180420000000"
+  def initialize
+    @symbol = ''
+    @start_date = (Time.now - 60.days).strftime "%Y%m%d" + "000000"
+  end
+
+  def stock_to_parse symbol
+    @symbol = symbol
   end
 
   def run
     connect
     fetch_page
-    fetch_parsed_response_body_in_JSON
+    parse_page_body
   end
 
 
   private
 
+  def build_url
+    "https://marketdata.websol.barchart.com/getHistory.json?apikey=" +
+    ENV['barchart_api_key'] + "&symbol=#{symbol}&type=daily&startDate=#{start_date}"
+  end
+
   def connect
-    @api_connection = BarchartApiConnect.new(url)
+    @api_connection = BarchartApiConnector.new(build_url)
   end
 
   def fetch_page
     api_connection.fetch_page_body
   end
 
-  def fetch_parsed_response_body_in_JSON
+  def parse_page_body
     api_connection.parse_page_response_body_JSON
   end
 end

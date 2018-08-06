@@ -13,10 +13,13 @@ class ActiveSupport::TestCase
     config.cassette_library_dir = 'test/cassettes/vcr_cassettes'
     config.hook_into :webmock
     config.allow_http_connections_when_no_cassette = true
-
     config.filter_sensitive_data("<REDACTED>") do
       ENV['barchart_api_key']
     end
+    config.default_cassette_options = {
+      :match_requests_on => [:method,
+        VCR.request_matchers.uri_without_param(:startDate)]
+   }
   end
 
   # Add more helper methods to be used by all tests here...

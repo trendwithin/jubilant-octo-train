@@ -1,6 +1,6 @@
 require 'mechanize'
 
-class MechanizeConnect
+class MechanizeConnector
   attr_reader :agent, :url
 
   def initialize url
