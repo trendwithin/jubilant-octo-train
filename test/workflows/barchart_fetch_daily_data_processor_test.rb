@@ -15,9 +15,11 @@ class BarchartDailyDataProcessorTest < ActiveSupport::TestCase
   end
 
   test 'returns daily price for AAPL' do
-    @fdd.collect_stock_symbols
-    assert_difference 'HistoricPrice.count' do
-      @fdd.fetch_daily_price_data
+    VCR.use_cassette('daily_price_insert_test') do
+      @fdd.collect_stock_symbols
+      assert_difference 'HistoricPrice.count' do
+        @fdd.fetch_daily_price_data
+      end
     end
     assert_equal 'AAPL', HistoricPrice.last.stock_symbol.symbol
   end

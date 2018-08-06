@@ -52,7 +52,7 @@ class FetchDailyData
   end
 
   def connect url
-    @api_connection = BarchartApiConnect.new url
+    @api_connection = BarchartApiConnector.new url
   end
 
   def fetch_page

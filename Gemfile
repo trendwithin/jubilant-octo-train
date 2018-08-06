@@ -9,6 +9,7 @@ end
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'mechanize', '~> 2.7', '>= 2.7.5'
 gem 'sprockets', '~> 3.5', '>= 3.5.2'
+gem 'watir', '~> 6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -54,6 +55,7 @@ group :test do
  gem 'terminal-notifier-guard', '~> 1.7'
  gem 'vcr', '~> 4.0'
  gem 'webmock', '~> 3.3'
+ gem 'test-prof', '~> 0.6.0'
 end
 
 group :development do

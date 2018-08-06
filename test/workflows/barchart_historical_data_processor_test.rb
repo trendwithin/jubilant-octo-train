@@ -20,9 +20,9 @@ class BarchartHistoricalDataProcessorTest < ActiveSupport::TestCase
 
   test 'response valid' do
     expected_count = 41
-    first_value = { "symbol"=>"Z", "timestamp"=>"2018-06-01T00:00:00-04:00",
-      "tradingDay"=>"2018-06-01", "open"=>59.89, "high"=>59.89, "low"=>58.37,
-      "close"=>59.03, "volume"=>1677600, "openInterest"=>nil }
+    first_value = { "symbol"=>"Z", "timestamp"=>"2018-06-04T00:00:00-04:00",
+      "tradingDay"=>"2018-06-04", "open"=>59.64, "high"=>60.22, "low"=>58.55,
+      "close"=>59.33, "volume"=>1673600, "openInterest"=>nil}
 
     results = @barchart_historical_data.parse_page_results
     assert_equal expected_count, results.count
@@ -31,8 +31,9 @@ class BarchartHistoricalDataProcessorTest < ActiveSupport::TestCase
 
   test '#format_results AR' do
     results = @barchart_historical_data.parse_page_results
-    expected = { :market_close_date=>"2018-06-01", :open=>59.89, :high=>59.89,
-      :low=>58.37, :close=>59.03, :net_change=>1000000, :volume=>1677600 }
+    expected = { :market_close_date=>"2018-06-04", :open=>59.64,
+      :high=>60.22, :low=>58.55, :close=>59.33, :net_change=>1000000,
+      :volume=>1673600 }
 
     result = @barchart_historical_data.format_results results.first
     assert_equal expected, result

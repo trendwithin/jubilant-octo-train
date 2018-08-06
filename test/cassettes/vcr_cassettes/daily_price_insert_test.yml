@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://marketdata.websol.barchart.com/getQuote.json?apikey=<REDACTED>&symbols=FAKE,TESTR,AAPL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mechanize/2.7.5 Ruby/2.5.0p0 (http://github.com/sparklemotion/mechanize/)
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Host:
+      - marketdata.websol.barchart.com
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '300'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Encoding:
+      - gzip
+      Content-Language:
+      - en
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 01 Aug 2018 18:05:19 GMT
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      P3p:
+      - CP="ALL DSP COR CURa ADMa OUR STP"
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.2.34 (Amazon) mod_ssl/2.2.34 OpenSSL/1.0.2k-fips PHP/5.3.29
+      Set-Cookie:
+      - AWSELB=6B2FE744747259872F56414CA44A91A38DFFBA9675051338E4A032F61537DAB81143576599831441D3BD013A6D81FD46E6A0E3046BAB57491CB637702B977DF7268BEBE4;PATH=/
+      - PHPSESSID=fa7bfaa0e20886ba32bd402695f08363; path=/
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.3.29
+      X-Websol-Id:
+      - 54.146.29.172
+      Content-Length:
+      - '268'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA3WQMW+DMBCF/0p1s2vZECB4o5kqdYgUtqqDay6AZGyETdoI8d97JFG2Sh78nu6793QLhKjjHEAtYHyDoBIhGAwYgm5JwWk2hgSHlcGEYbaRZj8XCNfh21saqKrjBzDAX9Npd0PeqvpEjtPDpqpxtPjy7gxZjb4ebiEgSQWcLjjVPYVFPYzkJkLuXwU9WctUiUxtMlNC0PRwB3v6Wh3icerNvS0XOYM46Qb/X5UJJYvnKofx8Chb8qJgMOJk0D3NjMuUwez6+GibEORHdKBkuWfQ9W23RUueSmrjfza/4OmOgbE+EEEnPFvdEkrkxdt5O8Uuz7MiL9ev9Q+LA6Y7dgEAAA==
+    http_version: 
+  recorded_at: Wed, 01 Aug 2018 18:05:19 GMT
+recorded_with: VCR 4.0.0

@@ -178,6 +178,38 @@ ALTER SEQUENCE public.fifty_two_week_highs_id_seq OWNED BY public.fifty_two_week
 
 
 --
+-- Name: fifty_two_week_lows; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.fifty_two_week_lows (
+    id bigint NOT NULL,
+    symbol text,
+    market_close_date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: fifty_two_week_lows_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.fifty_two_week_lows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: fifty_two_week_lows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.fifty_two_week_lows_id_seq OWNED BY public.fifty_two_week_lows.id;
+
+
+--
 -- Name: historic_prices; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -353,6 +385,13 @@ ALTER TABLE ONLY public.fifty_two_week_highs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
+-- Name: fifty_two_week_lows id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.fifty_two_week_lows ALTER COLUMN id SET DEFAULT nextval('public.fifty_two_week_lows_id_seq'::regclass);
+
+
+--
 -- Name: historic_prices id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -418,6 +457,14 @@ ALTER TABLE ONLY public.daily_high_lows
 
 ALTER TABLE ONLY public.fifty_two_week_highs
     ADD CONSTRAINT fifty_two_week_highs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fifty_two_week_lows fifty_two_week_lows_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.fifty_two_week_lows
+    ADD CONSTRAINT fifty_two_week_lows_pkey PRIMARY KEY (id);
 
 
 --
@@ -489,6 +536,13 @@ CREATE UNIQUE INDEX index_fifty_two_week_highs_on_symbol_and_market_close_date O
 
 
 --
+-- Name: index_fifty_two_week_lows_on_symbol_and_market_close_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_fifty_two_week_lows_on_symbol_and_market_close_date ON public.fifty_two_week_lows USING btree (symbol, market_close_date);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -500,6 +554,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180710172534'),
 ('20180712185902'),
 ('20180716194259'),
-('20180717171000');
+('20180717171000'),
+('20180801185936');
 
 
