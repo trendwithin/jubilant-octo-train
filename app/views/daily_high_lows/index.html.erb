@@ -1,51 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Daily High Lows</h1>
-
+<h1 class='high_low_header'>Daily High Lows</h1>
+<div>
+<%= link_to 'New Daily High Low', new_daily_high_low_path, class: 'link_to' %>
+<div>
 <table>
   <thead>
     <tr>
-      <th>One month high</th>
-      <th>One month low</th>
-      <th>Three month high</th>
-      <th>Three month low</th>
-      <th>Six month high</th>
-      <th>Six month low</th>
-      <th>Fifty two week high</th>
-      <th>Fifty two week low</th>
-      <th>All time high</th>
-      <th>All time low</th>
-      <th>Year to date high</th>
-      <th>Year to date low</th>
-      <th>Market close date</th>
+      <th class='daily_high_low_heading'>Date</th>
+      <th class='daily_high_low_heading'>1M Highs</th>
+      <th class='daily_high_low_heading'>1M Lows</th>
+      <th class='daily_high_low_heading'>3M Highs</th>
+      <th class='daily_high_low_heading'>3M Lows</th>
+      <th class='daily_high_low_heading'>6M Highs</th>
+      <th class='daily_high_low_heading'>6M Lows</th>
+      <th class='daily_high_low_heading'>52W Highs</th>
+      <th class='daily_high_low_heading'>52W Lows</th>
+      <th class='daily_high_low_heading'>All Time Highs</th>
+      <th class='daily_high_low_heading'>All Time Lows</th>
+      <th class='daily_high_low_heading'>YTD Highs</th>
+      <th class='daily_high_low_heading'>YTD Lows</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @daily_high_lows.each do |daily_high_low| %>
       <tr>
-        <td><%= daily_high_low.one_month_high %></td>
-        <td><%= daily_high_low.one_month_low %></td>
-        <td><%= daily_high_low.three_month_high %></td>
-        <td><%= daily_high_low.three_month_low %></td>
-        <td><%= daily_high_low.six_month_high %></td>
-        <td><%= daily_high_low.six_month_low %></td>
-        <td><%= daily_high_low.fifty_two_week_high %></td>
-        <td><%= daily_high_low.fifty_two_week_low %></td>
-        <td><%= daily_high_low.all_time_high %></td>
-        <td><%= daily_high_low.all_time_low %></td>
-        <td><%= daily_high_low.year_to_date_high %></td>
-        <td><%= daily_high_low.year_to_date_low %></td>
-        <td><%= daily_high_low.market_close_date %></td>
-        <td><%= link_to 'Show', daily_high_low %></td>
-        <td><%= link_to 'Edit', edit_daily_high_low_path(daily_high_low) %></td>
-        <td><%= link_to 'Destroy', daily_high_low, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.market_close_date %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.one_month_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.one_month_low %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.three_month_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.three_month_low %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.six_month_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.six_month_low %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.fifty_two_week_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.fifty_two_week_low %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.all_time_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.all_time_low %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.year_to_date_high %></td>
+        <td class='daily_high_low_data'><%= daily_high_low.year_to_date_low %></td>
+        <td><%= link_to 'Edit', edit_daily_high_low_path(daily_high_low), class: 'btn btn-edit' %></td>
+        <td><%= link_to 'Delete', daily_high_low, class: 'btn btn-delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Daily High Low', new_daily_high_low_path %>

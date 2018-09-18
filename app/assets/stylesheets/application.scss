@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
- 
+
+@import "global/normalize";
+@import "global/global";
+@import "global/grid";
+
+
 .centered {
   text-align: center;
 }

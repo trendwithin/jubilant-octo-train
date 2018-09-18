@@ -1,69 +1,70 @@
 <p id="notice"><%= notice %></p>
+<div class='high-low-list'>
+  <p>
+    <strong>One month high:</strong>
+    <%= @daily_high_low.one_month_high %>
+  </p>
 
-<p>
-  <strong>One month high:</strong>
-  <%= @daily_high_low.one_month_high %>
-</p>
+  <p>
+    <strong>One month low:</strong>
+    <%= @daily_high_low.one_month_low %>
+  </p>
 
-<p>
-  <strong>One month low:</strong>
-  <%= @daily_high_low.one_month_low %>
-</p>
+  <p>
+    <strong>Three month high:</strong>
+    <%= @daily_high_low.three_month_high %>
+  </p>
 
-<p>
-  <strong>Three month high:</strong>
-  <%= @daily_high_low.three_month_high %>
-</p>
+  <p>
+    <strong>Three month low:</strong>
+    <%= @daily_high_low.three_month_low %>
+  </p>
 
-<p>
-  <strong>Three month low:</strong>
-  <%= @daily_high_low.three_month_low %>
-</p>
+  <p>
+    <strong>Six month high:</strong>
+    <%= @daily_high_low.six_month_high %>
+  </p>
 
-<p>
-  <strong>Six month high:</strong>
-  <%= @daily_high_low.six_month_high %>
-</p>
+  <p>
+    <strong>Six month low:</strong>
+    <%= @daily_high_low.six_month_low %>
+  </p>
 
-<p>
-  <strong>Six month low:</strong>
-  <%= @daily_high_low.six_month_low %>
-</p>
+  <p>
+    <strong>Fifty two week high:</strong>
+    <%= @daily_high_low.fifty_two_week_high %>
+  </p>
 
-<p>
-  <strong>Fifty two week high:</strong>
-  <%= @daily_high_low.fifty_two_week_high %>
-</p>
+  <p>
+    <strong>Fifty two week low:</strong>
+    <%= @daily_high_low.fifty_two_week_low %>
+  </p>
 
-<p>
-  <strong>Fifty two week low:</strong>
-  <%= @daily_high_low.fifty_two_week_low %>
-</p>
+  <p>
+    <strong>All time high:</strong>
+    <%= @daily_high_low.all_time_high %>
+  </p>
 
-<p>
-  <strong>All time high:</strong>
-  <%= @daily_high_low.all_time_high %>
-</p>
+  <p>
+    <strong>All time low:</strong>
+    <%= @daily_high_low.all_time_low %>
+  </p>
 
-<p>
-  <strong>All time low:</strong>
-  <%= @daily_high_low.all_time_low %>
-</p>
+  <p>
+    <strong>Year to date high:</strong>
+    <%= @daily_high_low.year_to_date_high %>
+  </p>
 
-<p>
-  <strong>Year to date high:</strong>
-  <%= @daily_high_low.year_to_date_high %>
-</p>
+  <p>
+    <strong>Year to date low:</strong>
+    <%= @daily_high_low.year_to_date_low %>
+  </p>
 
-<p>
-  <strong>Year to date low:</strong>
-  <%= @daily_high_low.year_to_date_low %>
-</p>
-
-<p>
-  <strong>Market close date:</strong>
-  <%= @daily_high_low.market_close_date %>
-</p>
+  <p>
+    <strong>Market close date:</strong>
+    <%= @daily_high_low.market_close_date %>
+  </p>
+</div>
 
 <%= link_to 'Edit', edit_daily_high_low_path(@daily_high_low) %> |
 <%= link_to 'Back', daily_high_lows_path %>
