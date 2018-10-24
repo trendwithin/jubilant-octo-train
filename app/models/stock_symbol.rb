@@ -9,7 +9,7 @@ class StockSymbol < ApplicationRecord
 
   def process_historical_data
     historical_data = FetchHistoricalData.new(self.symbol).run
-    bhd = BarchartHistoricalData.new(historical_data)
+    bhd = BarchartHistoricalDataProcessor.new(historical_data)
     bhd.insert_historic_stock_price(self)
   end
 end

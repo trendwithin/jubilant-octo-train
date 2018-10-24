@@ -210,6 +210,38 @@ ALTER SEQUENCE public.fifty_two_week_lows_id_seq OWNED BY public.fifty_two_week_
 
 
 --
+-- Name: five_period_leaders; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.five_period_leaders (
+    id bigint NOT NULL,
+    positive integer,
+    negative integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: five_period_leaders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.five_period_leaders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: five_period_leaders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.five_period_leaders_id_seq OWNED BY public.five_period_leaders.id;
+
+
+--
 -- Name: historic_prices; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -392,6 +424,13 @@ ALTER TABLE ONLY public.fifty_two_week_lows ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: five_period_leaders id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.five_period_leaders ALTER COLUMN id SET DEFAULT nextval('public.five_period_leaders_id_seq'::regclass);
+
+
+--
 -- Name: historic_prices id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -465,6 +504,14 @@ ALTER TABLE ONLY public.fifty_two_week_highs
 
 ALTER TABLE ONLY public.fifty_two_week_lows
     ADD CONSTRAINT fifty_two_week_lows_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: five_period_leaders five_period_leaders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.five_period_leaders
+    ADD CONSTRAINT five_period_leaders_pkey PRIMARY KEY (id);
 
 
 --
@@ -543,6 +590,13 @@ CREATE UNIQUE INDEX index_fifty_two_week_lows_on_symbol_and_market_close_date ON
 
 
 --
+-- Name: index_five_period_leaders_on_positive_and_negative; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_five_period_leaders_on_positive_and_negative ON public.five_period_leaders USING btree (positive, negative);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -555,6 +609,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180712185902'),
 ('20180716194259'),
 ('20180717171000'),
-('20180801185936');
+('20180801185936'),
+('20180918204931');
 
 

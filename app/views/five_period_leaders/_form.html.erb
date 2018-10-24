@@ -1,0 +1,27 @@
+<%= form_with(model: five_period_leader, local: true) do |form| %>
+  <% if five_period_leader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(five_period_leader.errors.count, "error") %> prohibited this five_period_leader from being saved:</h2>
+
+      <ul>
+      <% five_period_leader.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :positive %>
+    <%= form.number_field :positive, id: :five_period_leader_positive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :negative %>
+    <%= form.number_field :negative, id: :five_period_leader_negative %>
+  </div>
+
+  <div class="actions" id="five_period_leader_submit">
+    <%= form.submit %>
+  </div>
+<% end %>
