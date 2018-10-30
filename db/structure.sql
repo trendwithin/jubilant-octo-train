@@ -389,6 +389,38 @@ ALTER SEQUENCE public.stock_symbols_id_seq OWNED BY public.stock_symbols.id;
 
 
 --
+-- Name: tradeable_universes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tradeable_universes (
+    id bigint NOT NULL,
+    three_month integer,
+    six_month integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tradeable_universes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.tradeable_universes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tradeable_universes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.tradeable_universes_id_seq OWNED BY public.tradeable_universes.id;
+
+
+--
 -- Name: all_time_highs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -456,6 +488,13 @@ ALTER TABLE ONLY public.sectors ALTER COLUMN id SET DEFAULT nextval('public.sect
 --
 
 ALTER TABLE ONLY public.stock_symbols ALTER COLUMN id SET DEFAULT nextval('public.stock_symbols_id_seq'::regclass);
+
+
+--
+-- Name: tradeable_universes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tradeable_universes ALTER COLUMN id SET DEFAULT nextval('public.tradeable_universes_id_seq'::regclass);
 
 
 --
@@ -555,6 +594,14 @@ ALTER TABLE ONLY public.stock_symbols
 
 
 --
+-- Name: tradeable_universes tradeable_universes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tradeable_universes
+    ADD CONSTRAINT tradeable_universes_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: index_all_time_highs_on_symbol_and_market_close_date; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -597,6 +644,13 @@ CREATE INDEX index_five_period_leaders_on_positive_and_negative ON public.five_p
 
 
 --
+-- Name: index_tradeable_universes_on_three_month_and_six_month; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tradeable_universes_on_three_month_and_six_month ON public.tradeable_universes USING btree (three_month, six_month);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -610,6 +664,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180716194259'),
 ('20180717171000'),
 ('20180801185936'),
-('20180918204931');
+('20180918204931'),
+('20181030195946');
 
 

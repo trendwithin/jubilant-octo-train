@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tradeable_universes
   resources :five_period_leaders, except: [:show]
   resources :daily_high_lows, except: [:show]
   resources :stock_symbols, except: [:show]

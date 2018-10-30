@@ -23,10 +23,6 @@ class FivePeriodLeadersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to five_period_leader_url(FivePeriodLeader.last)
   end
 
-  test "should show five_period_leader" do
-    get five_period_leader_url(@five_period_leader)
-    assert_response :success
-  end
 
   test "should get edit" do
     get edit_five_period_leader_url(@five_period_leader)

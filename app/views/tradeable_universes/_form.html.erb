@@ -1,0 +1,27 @@
+<%= form_with(model: tradeable_universe, local: true) do |form| %>
+  <% if tradeable_universe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tradeable_universe.errors.count, "error") %> prohibited this tradeable_universe from being saved:</h2>
+
+      <ul>
+      <% tradeable_universe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :three_month %>
+    <%= form.number_field :three_month, id: :tradeable_universe_three_month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :six_month %>
+    <%= form.number_field :six_month, id: :tradeable_universe_six_month %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
