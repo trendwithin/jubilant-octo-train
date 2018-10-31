@@ -1,0 +1,2 @@
+module TradeableUniversesHelper
+end

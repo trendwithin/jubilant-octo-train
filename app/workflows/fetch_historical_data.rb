@@ -2,8 +2,8 @@ class FetchHistoricalData
   attr_accessor :api_connection
   attr_reader :symbol, :url, :start_date
 
-  def initialize
-    @symbol = ''
+  def initialize symbol=''
+    @symbol = symbol
     @start_date = (Time.now - 60.days).strftime "%Y%m%d" + "000000"
   end
 

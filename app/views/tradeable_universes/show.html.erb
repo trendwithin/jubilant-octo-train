@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Three month:</strong>
+  <%= @tradeable_universe.three_month %>
+</p>
+
+<p>
+  <strong>Six month:</strong>
+  <%= @tradeable_universe.six_month %>
+</p>
+
+<%= link_to 'Edit', edit_tradeable_universe_path(@tradeable_universe) %> |
+<%= link_to 'Back', tradeable_universes_path %>

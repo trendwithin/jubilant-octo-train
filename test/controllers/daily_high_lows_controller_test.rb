@@ -24,11 +24,6 @@ class DailyHighLowsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to daily_high_low_url(DailyHighLow.last)
   end
 
-  test "should show daily_high_low" do
-    get daily_high_low_url(@daily_high_low)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_daily_high_low_url(@daily_high_low)
     assert_response :success

@@ -51,6 +51,5 @@ class DailyHighLowsTest < ApplicationSystemTestCase
     find('input[name="commit"]').click
 
     assert_content 'Market close date has already been taken'
-
   end
 end

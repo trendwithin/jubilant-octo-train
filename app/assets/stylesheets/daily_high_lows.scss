@@ -1,3 +1,44 @@
 // Place all the styles related to the daily_high_lows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  text-align: center;
+  color: #000;
+}
+
+h1.high_low_header {
+    font-size: 200%;
+    padding-top: 1em;
+}
+
+table {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.daily_high_low_heading {
+  font-size: 90%;
+  padding-left: 1em;
+}
+
+.daily_high_low_data {
+  text-align: center;
+}
+
+.high-low-list {
+  padding-left: 40%;
+  p {
+    padding: 1em;
+  }
+}
+
+tbody {
+  font-size: 80%;
+  font-weight: bold;
+}
+
+form {
+  width: 50%;
+  margin-left: 23%;
+}
