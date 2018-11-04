@@ -61,6 +61,10 @@ class DailyHighLowsController < ApplicationController
     end
   end
 
+  def import_high_lows
+    ImportNewHighLowWorker.perform_async
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_daily_high_low
