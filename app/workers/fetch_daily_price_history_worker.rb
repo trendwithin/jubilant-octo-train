@@ -1,6 +1,4 @@
-class FetchDailyPriceHistoryWorker
-  include Sidekiq::Worker
-  sidekiq_options retry: false
+class FetchDailyPriceHistoryWorker < ProcessWorker
 
   def perform
     daily_data_processor = BarchartDailyDataProcessor.new
