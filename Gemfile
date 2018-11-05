@@ -10,6 +10,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'mechanize', '~> 2.7', '>= 2.7.5'
 gem 'sprockets', '~> 3.5', '>= 3.5.2'
 gem 'watir', '~> 6.0'
+gem 'redis'
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'

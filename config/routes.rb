@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => "/sidekiq"
   resources :tradeable_universes
   resources :five_period_leaders, except: [:show]
+  post 'daily_high_lows/upload', to: 'daily_high_lows#import_high_lows'
   resources :daily_high_lows, except: [:show]
   resources :stock_symbols, except: [:show]
   resources :price_histories, only: [:new, :index] do

@@ -28,7 +28,7 @@ class FivePeriodLeadersController < ApplicationController
 
     respond_to do |format|
       if @five_period_leader.save
-        format.html { redirect_to @five_period_leader, notice: 'Five period leader was successfully created.' }
+        format.html { redirect_to five_period_leaders_path, notice: 'Five period leader was successfully created.' }
         format.json { render :show, status: :created, location: @five_period_leader }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FivePeriodLeadersController < ApplicationController
   def update
     respond_to do |format|
       if @five_period_leader.update(five_period_leader_params)
-        format.html { redirect_to @five_period_leader, notice: 'Five period leader was successfully updated.' }
+        format.html { redirect_to five_period_leaders_path, notice: 'Five period leader was successfully updated.' }
         format.json { render :show, status: :ok, location: @five_period_leader }
       else
         format.html { render :edit }

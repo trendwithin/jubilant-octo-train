@@ -28,7 +28,7 @@ class DailyHighLowsController < ApplicationController
 
     respond_to do |format|
       if @daily_high_low.save
-        format.html { redirect_to @daily_high_low, notice: 'Daily high low was successfully created.' }
+        format.html { redirect_to daily_high_lows_path, notice: 'Daily high low was successfully created.' }
         format.json { render :show, status: :created, location: @daily_high_low }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DailyHighLowsController < ApplicationController
   def update
     respond_to do |format|
       if @daily_high_low.update(daily_high_low_params)
-        format.html { redirect_to @daily_high_low, notice: 'Daily high low was successfully updated.' }
+        format.html { redirect_to daily_high_lows_path, notice: 'Daily high low was successfully updated.' }
         format.json { render :show, status: :ok, location: @daily_high_low }
       else
         format.html { render :edit }
@@ -59,6 +59,10 @@ class DailyHighLowsController < ApplicationController
       format.html { redirect_to daily_high_lows_url, notice: 'Daily high low was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import_high_lows
+    ImportNewHighLowWorker.perform_async
   end
 
   private

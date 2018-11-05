@@ -8,10 +8,7 @@ class PriceHistoriesController < ApplicationController
   end
 
   def fetch_price_history
-    daily_data_processor = BarchartDailyDataProcessor.new
-    fetch_daily_data = FetchDailyData.new daily_data_processor
-    fetch_daily_data.collect_stock_symbols
-    fetch_daily_data.fetch_daily_price_data
+    FetchDailyPriceHistoryWorker.perform_async
     redirect_to price_histories_path
   end
 end

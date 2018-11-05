@@ -52,4 +52,14 @@ class DailyHighLowsTest < ApplicationSystemTestCase
 
     assert_content 'Market close date has already been taken'
   end
+
+  test 'update daily high low record' do
+    record = daily_high_lows(:one)
+    visit edit_daily_high_low_path(record)
+    assert_content 'Editing Daily High Low'
+    fill_in 'daily_high_low[one_month_high]', with: 2
+    find('input[name="commit"]').click
+    assert_content 'Daily high low was successfully updated.'
+    assert current_url, daily_high_lows_path
+  end
 end
