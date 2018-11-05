@@ -56,7 +56,6 @@ class DailyHighLowsTest < ApplicationSystemTestCase
   test 'update daily high low record' do
     record = daily_high_lows(:one)
     visit edit_daily_high_low_path(record)
-    # byebug
     assert_content 'Editing Daily High Low'
     fill_in 'daily_high_low[one_month_high]', with: 2
     find('input[name="commit"]').click
