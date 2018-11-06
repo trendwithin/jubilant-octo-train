@@ -20,11 +20,24 @@ class TradeableUniversesTest < ApplicationSystemTestCase
     assert_current_path new_tradeable_universe_path
   end
 
-  test 'valid digits' do
+  test 'valid input' do
     visit new_tradeable_universe_url
     fill_in 'tradeable_universe[three_month]', with: 6
     fill_in 'tradeable_universe[six_month]', with: 5
     find('input[name="commit"]').click
     assert_content 'Tradeable universe was successfully created.'
+  end
+
+  test 'delete tradeable universe record' do
+    visit tradeable_universes_url
+    record = tradeable_universes(:one)
+    path = "td#tradeable_universe_#{record.id}"
+    byebug
+    within(path) do
+      page.accept_confirm do
+        click_link 'Destroy'
+      end
+    end
+    assert_content 'Tradeable universe was successfully destroyed.'
   end
 end

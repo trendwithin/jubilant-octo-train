@@ -1,58 +1,40 @@
 class DailyHighLowsController < ApplicationController
-  before_action :set_daily_high_low, only: [:show, :edit, :update, :destroy]
+  before_action :set_daily_high_low, only: [:edit, :update, :destroy]
 
-  # GET /daily_high_lows
-  # GET /daily_high_lows.json
+
   def index
     @daily_high_lows = DailyHighLow.all
   end
 
-  # GET /daily_high_lows/1
-  # GET /daily_high_lows/1.json
-  def show
-  end
-
-  # GET /daily_high_lows/new
   def new
     @daily_high_low = DailyHighLow.new
   end
 
-  # GET /daily_high_lows/1/edit
   def edit
   end
 
-  # POST /daily_high_lows
-  # POST /daily_high_lows.json
   def create
     @daily_high_low = DailyHighLow.new(daily_high_low_params)
 
     respond_to do |format|
       if @daily_high_low.save
         format.html { redirect_to daily_high_lows_path, notice: 'Daily high low was successfully created.' }
-        format.json { render :show, status: :created, location: @daily_high_low }
       else
         format.html { render :new }
-        format.json { render json: @daily_high_low.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /daily_high_lows/1
-  # PATCH/PUT /daily_high_lows/1.json
   def update
     respond_to do |format|
       if @daily_high_low.update(daily_high_low_params)
         format.html { redirect_to daily_high_lows_path, notice: 'Daily high low was successfully updated.' }
-        format.json { render :show, status: :ok, location: @daily_high_low }
       else
         format.html { render :edit }
-        format.json { render json: @daily_high_low.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /daily_high_lows/1
-  # DELETE /daily_high_lows/1.json
   def destroy
     @daily_high_low.destroy
     respond_to do |format|

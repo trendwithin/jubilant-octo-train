@@ -23,11 +23,6 @@ class TradeableUniversesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to tradeable_universe_url(TradeableUniverse.last)
   end
 
-  test "should show tradeable_universe" do
-    get tradeable_universe_url(@tradeable_universe)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_tradeable_universe_url(@tradeable_universe)
     assert_response :success

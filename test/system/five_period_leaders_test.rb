@@ -1,12 +1,13 @@
 require "application_system_test_case"
 
 class FivePeriodLeadersTest < ApplicationSystemTestCase
+
   test "visiting the index" do
     visit five_period_leaders_url
     assert_selector "h1", text: "Five Period Leader"
   end
 
-  test 'valid input' do
+  test 'create five period leader with valid input' do
     visit new_five_period_leader_url
     fill_in 'five_period_leader[positive]', with: 1
     fill_in 'five_period_leader[negative]', with: 1
@@ -15,7 +16,7 @@ class FivePeriodLeadersTest < ApplicationSystemTestCase
     assert current_url, five_period_leaders_path
   end
 
-  test 'invalid input' do
+  test 'create five period leader invalid input' do
     visit new_five_period_leader_url
     find('input[name="commit"]').click
     assert_content '2 errors prohibited'
@@ -30,5 +31,19 @@ class FivePeriodLeadersTest < ApplicationSystemTestCase
     find('input[name="commit"]').click
     assert_content 'Five period leader was successfully updated'
     assert current_url, five_period_leaders_path
+  end
+
+  test 'destroy five period leader' do
+    visit five_period_leaders_url
+    record = five_period_leaders(:one)
+    path = "td#five_period_leader_#{record.id}"
+    count = FivePeriodLeader.count
+    within(path) do
+      page.accept_confirm do
+        click_link 'Destroy'
+      end
+    end
+    assert_content 'Five period leader was successfully destroyed.'
+    assert_equal count - 1, FivePeriodLeader.count
   end
 end
