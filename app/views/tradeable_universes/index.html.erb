@@ -16,9 +16,8 @@
       <tr>
         <td><%= tradeable_universe.three_month %></td>
         <td><%= tradeable_universe.six_month %></td>
-        <td><%= link_to 'Show', tradeable_universe %></td>
         <td><%= link_to 'Edit', edit_tradeable_universe_path(tradeable_universe) %></td>
-        <td><%= link_to 'Destroy', tradeable_universe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id=<%= dom_id(tradeable_universe) %>><%= link_to 'Destroy', tradeable_universe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

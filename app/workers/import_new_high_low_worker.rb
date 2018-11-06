@@ -1,6 +1,4 @@
-class ImportNewHighLowWorker
-  include Sidekiq::Worker
-  sidekiq_options retry: false
+class ImportNewHighLowWorker < ProcessWorker
 
   def perform
     url = 'https://www.barchart.com/stocks/highs-lows/summary'

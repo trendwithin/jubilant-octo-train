@@ -20,7 +20,7 @@ class FivePeriodLeadersControllerTest < ActionDispatch::IntegrationTest
       post five_period_leaders_url, params: { five_period_leader: { negative: @five_period_leader.negative, positive: @five_period_leader.positive } }
     end
 
-    assert_redirected_to five_period_leader_url(FivePeriodLeader.last)
+    assert_redirected_to five_period_leaders_url
   end
 
 
@@ -31,7 +31,7 @@ class FivePeriodLeadersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update five_period_leader" do
     patch five_period_leader_url(@five_period_leader), params: { five_period_leader: { negative: @five_period_leader.negative, positive: @five_period_leader.positive } }
-    assert_redirected_to five_period_leader_url(@five_period_leader)
+    assert_redirected_to five_period_leaders_url
   end
 
   test "should destroy five_period_leader" do

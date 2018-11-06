@@ -17,7 +17,7 @@
         <td><%= five_period_leader.positive %></td>
         <td><%= five_period_leader.negative %></td>
         <td><%= link_to 'Edit', edit_five_period_leader_path(five_period_leader) %></td>
-        <td><%= link_to 'Destroy', five_period_leader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id=<%= dom_id(five_period_leader) %>><%= link_to 'Destroy', five_period_leader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

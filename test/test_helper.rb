@@ -4,6 +4,8 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require 'vcr'
 require 'rake'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
