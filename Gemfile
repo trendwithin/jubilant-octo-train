@@ -48,6 +48,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'bullet', '~> 5.8', '>= 5.8.1'
 end
 
 group :test do
@@ -58,6 +59,7 @@ group :test do
  gem 'vcr', '~> 4.0'
  gem 'webmock', '~> 3.3'
  gem 'test-prof', '~> 0.6.0'
+ gem 'simplecov', '~> 0.12.0'
 end
 
 group :development do
