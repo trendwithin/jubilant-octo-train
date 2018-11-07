@@ -32,7 +32,6 @@ class TradeableUniversesTest < ApplicationSystemTestCase
     visit tradeable_universes_url
     record = tradeable_universes(:one)
     path = "td#tradeable_universe_#{record.id}"
-    byebug
     within(path) do
       page.accept_confirm do
         click_link 'Destroy'
