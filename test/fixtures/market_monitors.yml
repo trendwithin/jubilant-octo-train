@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  market_close_date: 2018-11-15
+  up_four_pct_daily: 1
+  down_four_pct_daily: 1
+  up_twenty_five_pct_quarter: 1
+  down_twenty_five_pct_quarter: 1
+  up_twenty_five_pct_month: 1
+  down_twenty_five_pct_month: 1
+  up_thirteen_pct_six_weeks: 1
+  down_thirteen_pct_six_weeks: 1
+  up_fifty_pct_month: 1
+  down_fifty_pct_month: 1
+  total_stocks: 1
+
+two:
+  market_close_date: 2018-11-16
+  up_four_pct_daily: 1
+  down_four_pct_daily: 1
+  up_twenty_five_pct_quarter: 1
+  down_twenty_five_pct_quarter: 1
+  up_twenty_five_pct_month: 1
+  down_twenty_five_pct_month: 1
+  up_thirteen_pct_six_weeks: 1
+  down_thirteen_pct_six_weeks: 1
+  up_fifty_pct_month: 1
+  down_fifty_pct_month: 1
+  total_stocks: 1

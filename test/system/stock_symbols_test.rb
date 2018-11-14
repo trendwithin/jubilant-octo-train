@@ -10,7 +10,7 @@ class StockSymbolsTest < ApplicationSystemTestCase
   test 'Invalid Input' do
     visit new_stock_symbol_path
     find('input[name="commit"]').click
-    assert_content '2 errors prohibited this article from being saved:'
+    assert_content '2 errors prohibited this record from being saved:'
   end
 
   test 'valid form input' do
