@@ -313,6 +313,48 @@ ALTER SEQUENCE public.industries_id_seq OWNED BY public.industries.id;
 
 
 --
+-- Name: market_monitors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.market_monitors (
+    id bigint NOT NULL,
+    market_close_date date NOT NULL,
+    up_four_pct_daily integer NOT NULL,
+    down_four_pct_daily integer NOT NULL,
+    up_twenty_five_pct_quarter integer NOT NULL,
+    down_twenty_five_pct_quarter integer NOT NULL,
+    up_twenty_five_pct_month integer NOT NULL,
+    down_twenty_five_pct_month integer NOT NULL,
+    up_thirteen_pct_six_weeks integer NOT NULL,
+    down_thirteen_pct_six_weeks integer NOT NULL,
+    up_fifty_pct_month integer NOT NULL,
+    down_fifty_pct_month integer NOT NULL,
+    total_stocks integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: market_monitors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.market_monitors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: market_monitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.market_monitors_id_seq OWNED BY public.market_monitors.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -477,6 +519,13 @@ ALTER TABLE ONLY public.industries ALTER COLUMN id SET DEFAULT nextval('public.i
 
 
 --
+-- Name: market_monitors id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.market_monitors ALTER COLUMN id SET DEFAULT nextval('public.market_monitors_id_seq'::regclass);
+
+
+--
 -- Name: sectors id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -567,6 +616,14 @@ ALTER TABLE ONLY public.historic_prices
 
 ALTER TABLE ONLY public.industries
     ADD CONSTRAINT industries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: market_monitors market_monitors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.market_monitors
+    ADD CONSTRAINT market_monitors_pkey PRIMARY KEY (id);
 
 
 --
@@ -665,6 +722,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180717171000'),
 ('20180801185936'),
 ('20180918204931'),
-('20181030195946');
+('20181030195946'),
+('20181114182419');
 
 

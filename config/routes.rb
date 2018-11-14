@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :market_monitors
   root 'static_pages#home'
 
   require 'sidekiq/web'
