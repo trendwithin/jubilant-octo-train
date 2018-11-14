@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+
   require 'sidekiq/web'
   mount Sidekiq::Web => "/sidekiq"
   resources :tradeable_universes, except: [:show]

@@ -42,7 +42,12 @@ section {
 /* ********************* */
 /* Headings */
 /* ********************* */
-
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), image-url('sunset_background');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+}
 
 h1,
 h2,
@@ -82,7 +87,49 @@ h3 {
   letter-spacing: 0px;
 }
 
+/* ********************* */
+/* NAV BAR               */
+/* ********************* */
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 60px;
+}
 
+.main-nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
+  padding: 8px 0;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 2px solid #e67e22;
+}
+
+
+
+/* ********************* */
+/* HERO                  */
+/* ********************* */
+
+.hero-text-box {
+  position: absolute;
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /* ********************* */
 /* Generic Links */
@@ -117,6 +164,10 @@ input[type=submit] {
   font-weight: 300;
   border-radius: 200px;
   transition: background-color 0.4s, border 0.2s, color 0.2s;
+}
+
+.submit_btn {
+  width: 50%;
 }
 
 
@@ -168,6 +219,37 @@ input[type=submit]:active{
   font-size: 80%;
 }
 
+.btn-block {
+  display: block;
+}
+
 .link_to {
   margin-left: 6%;
+}
+
+.center-block {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.center-inline {
+  display: inline;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+}
+// /* ********************* */
+// /* Padding Margin        */
+// /* ********************* */
+
+.one-em-padding-top {
+  padding-top: 1em;
+}
+.one-em-margin-top {
+  margin-top: 1em;
 }

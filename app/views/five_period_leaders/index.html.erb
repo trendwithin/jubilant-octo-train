@@ -1,28 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Five Period Leaders</h1>
-
-<table>
-  <thead>
-    <tr>
+<p class="centered">
+  <%= link_to 'New Five Period Leader', new_five_period_leader_path, class: 'btn' %>
+</p>
+<div class="center-inline">
+  <table class="center">
+    <thead>
+      <tr>
       <th>Positive</th>
       <th>Negative</th>
       <th colspan="3"></th>
-    </tr>
-  </thead>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @five_period_leaders.each do |five_period_leader| %>
-      <tr>
+    <tbody>
+      <% @five_period_leaders.each do |five_period_leader| %>
+      <tr class='centered'>
         <td><%= five_period_leader.positive %></td>
         <td><%= five_period_leader.negative %></td>
         <td><%= link_to 'Edit', edit_five_period_leader_path(five_period_leader) %></td>
         <td id=<%= dom_id(five_period_leader) %>><%= link_to 'Destroy', five_period_leader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Five Period Leader', new_five_period_leader_path %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

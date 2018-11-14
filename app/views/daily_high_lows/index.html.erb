@@ -1,11 +1,23 @@
 <p id="notice"><%= notice %></p>
-<%= form_tag daily_high_lows_upload_path do %>
-  <%= submit_tag "Import High Lows" %>
-<% end %>
+<div class="row">
+  <div class='one-em-padding-top'>
+    <div class="center-block">
+      <%= form_tag daily_high_lows_upload_path do %>
+        <%= submit_tag "Import High Lows" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+<div class='row'>
+  <div class="centered">
+    <%= link_to 'New Daily High Low', new_daily_high_low_path, class: 'btn one-em-margin-top' %>
+  </div>
+</div>
+
 <h1 class='high_low_header'>Daily High Lows</h1>
-<div>
-<%= link_to 'New Daily High Low', new_daily_high_low_path, class: 'link_to' %>
-<div>
+</div>
+
 <table>
   <thead>
     <tr>
