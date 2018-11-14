@@ -1,7 +1,7 @@
 <% if notice %>
   <p><%= notice %></p>
 <% end %>
-<div id="stock_symbol_form">
+<div id="stock_symbol_form" class='one-em-margin-top'>
   <h1 class='centered'>Add Symbol</h1>
   <%= render 'form', stock_symbol: @stock_symbol, sectors: @sectors, industries: @industries %>
 </div>
