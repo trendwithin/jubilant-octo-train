@@ -219,6 +219,10 @@ input[type=submit]:active{
   font-size: 80%;
 }
 
+.btn-block {
+  display: block;
+}
+
 .link_to {
   margin-left: 6%;
 }
@@ -228,6 +232,13 @@ input[type=submit]:active{
   margin-left:auto;
   margin-right:auto;
 }
+
+.center-inline {
+  display: inline;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 table.center {
   margin-left:auto;
   margin-right:auto;
