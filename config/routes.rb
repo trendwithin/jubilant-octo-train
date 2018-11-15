@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, only: [:signed_in]
   root 'static_pages#home'
 
   require 'sidekiq/web'
