@@ -17,6 +17,7 @@ module Scanner
     config.active_record.schema_format = :sql
 
     # Dynamic Error Handling (for Views) Config
-    config.expections_app = self.routes
+    #config.expections_app = self.routes
+    config.exception_handler = { dev: true }
   end
 end

@@ -12,7 +12,7 @@ gem 'sprockets', '~> 3.5', '>= 3.5.2'
 gem 'watir', '~> 6.0'
 gem 'redis'
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
-
+gem 'exception_handler', '~> 0.8.0.0'   
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record

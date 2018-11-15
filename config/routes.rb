@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => "/sidekiq"
 
-  get "/404", to: "errors#not_found", via: :all
-  get "/500", to: "errors#internal_server_error", via: :all
-
   resources :market_monitors
   resources :tradeable_universes, except: [:show]
   resources :five_period_leaders, except: [:show]
