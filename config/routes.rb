@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, only: [:signed_in]
+  devise_for :users
+
   root 'static_pages#home'
+
+  devise_scope :user do # NB: Issue since 2016 on Github about devise_scope
+    get 'login', to: 'devise/sessions#new'
+    delete 'logout', to: 'devise/sessions#destroy'
+  end
 
   require 'sidekiq/web'
   mount Sidekiq::Web => "/sidekiq"
