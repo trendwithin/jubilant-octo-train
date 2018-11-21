@@ -2,13 +2,17 @@
   <nav>
     <div class="row">
       <ul class="main-nav">
-        <li><%= link_to 'Daily High Lows', daily_high_lows_path %></li>
-        <li><%= link_to 'New Symbol', new_stock_symbol_path %></li>
-        <li><%= link_to 'Five Period Leaders', five_period_leaders_path %></li>
-        <li><%= link_to 'Price History', new_price_history_path %></li>
-        <li><%= link_to 'Universe', new_tradeable_universe_path %></li>
-        <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <li><%= link_to 'Daily High Lows', daily_high_lows_path %></li>
+          <li><%= link_to 'New Symbol', new_stock_symbol_path %></li>
+          <li><%= link_to 'Five Period Leaders', five_period_leaders_path %></li>
+          <li><%= link_to 'Price History', new_price_history_path %></li>
+          <li><%= link_to 'Universe', new_tradeable_universe_path %></li>
+        <% end %>
+        <% if user_signed_in? && current_user.admin? %>
           <li>  <%= link_to "Log out", destroy_user_session_path, method: :delete %> </li>
+        <% else %>
+          <li> <%= link_to 'Log in', new_user_session_path %>
         <% end %>
       </ul>
     </div>
