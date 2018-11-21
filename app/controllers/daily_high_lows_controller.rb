@@ -1,13 +1,16 @@
 class DailyHighLowsController < ApplicationController
   before_action :set_daily_high_low, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
 
   def index
     @daily_high_lows = DailyHighLow.all
+    authorize @daily_high_lows
   end
 
   def new
     @daily_high_low = DailyHighLow.new
+    authorize @daily_high_low
   end
 
   def edit
@@ -15,7 +18,7 @@ class DailyHighLowsController < ApplicationController
 
   def create
     @daily_high_low = DailyHighLow.new(daily_high_low_params)
-
+    authorize @daily_high_low
     respond_to do |format|
       if @daily_high_low.save
         format.html { redirect_to daily_high_lows_path, notice: 'Daily high low was successfully created.' }
@@ -37,6 +40,7 @@ class DailyHighLowsController < ApplicationController
 
   def destroy
     @daily_high_low.destroy
+    authorize @daily_high_low
     respond_to do |format|
       format.html { redirect_to daily_high_lows_url, notice: 'Daily high low was successfully destroyed.' }
       format.json { head :no_content }
@@ -51,6 +55,7 @@ class DailyHighLowsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_daily_high_low
       @daily_high_low = DailyHighLow.find(params[:id])
+      authorize @daily_high_low
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
