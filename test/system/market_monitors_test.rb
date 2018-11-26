@@ -1,6 +1,11 @@
 require "application_system_test_case"
 
 class MarketMonitorsTest < ApplicationSystemTestCase
+  setup do
+    @user = users(:admin)
+    sign_in(@user)
+  end
+  
   test "visiting the index" do
     visit market_monitors_url
 

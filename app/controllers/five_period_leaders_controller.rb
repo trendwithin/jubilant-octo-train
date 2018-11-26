@@ -1,5 +1,6 @@
 class FivePeriodLeadersController < ApplicationController
   before_action :set_five_period_leader, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @five_period_leaders = FivePeriodLeader.all
@@ -14,6 +15,7 @@ class FivePeriodLeadersController < ApplicationController
 
   def create
     @five_period_leader = FivePeriodLeader.new(five_period_leader_params)
+    authorize @five_period_leader
 
     respond_to do |format|
       if @five_period_leader.save
@@ -46,6 +48,7 @@ class FivePeriodLeadersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_five_period_leader
       @five_period_leader = FivePeriodLeader.find(params[:id])
+      authorize @five_period_leader
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

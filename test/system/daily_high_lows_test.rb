@@ -1,7 +1,19 @@
 require "application_system_test_case"
 
 class DailyHighLowsTest < ApplicationSystemTestCase
-  test 'page' do
+
+  setup do
+    @user = users(:admin)
+    sign_in(@user)
+  end
+
+  test 'new_daily_high_low_path inaccessible without credentials' do
+    sign_out(@user)
+    visit new_daily_high_low_path
+    assert_content 'You need to sign in or sign up before continuing.'
+  end
+
+  test 'new_daily_high_low_path accessible with credentials' do
     visit new_daily_high_low_path
     assert :success
   end

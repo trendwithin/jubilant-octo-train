@@ -1,13 +1,15 @@
 class TradeableUniversesController < ApplicationController
   before_action :set_tradeable_universe, only: [:edit, :update, :destroy]
-
+  before_action :authenticate_user!
 
   def index
     @tradeable_universes = TradeableUniverse.all
+    authorize @tradeable_universes
   end
 
   def new
     @tradeable_universe = TradeableUniverse.new
+    authorize @tradeable_universe
   end
 
   def edit
@@ -15,6 +17,7 @@ class TradeableUniversesController < ApplicationController
 
   def create
     @tradeable_universe = TradeableUniverse.new(tradeable_universe_params)
+    authorize @tradeable_universe
 
     respond_to do |format|
       if @tradeable_universe.save
@@ -47,6 +50,7 @@ class TradeableUniversesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tradeable_universe
       @tradeable_universe = TradeableUniverse.find(params[:id])
+      authorize @tradeable_universe
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
