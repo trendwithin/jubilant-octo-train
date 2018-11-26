@@ -13,7 +13,7 @@ class DailyHighLowPolicy < ApplicationPolicy
   end
 
   def create?
-    retrun true if admin?
+    return true if admin?
   end
 
   def edit?

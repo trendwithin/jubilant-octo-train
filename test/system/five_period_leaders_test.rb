@@ -1,6 +1,10 @@
 require "application_system_test_case"
 
 class FivePeriodLeadersTest < ApplicationSystemTestCase
+  setup do
+    @user = users(:admin)
+    sign_in(@user)
+  end
 
   test "visiting the index" do
     visit five_period_leaders_url
