@@ -1,8 +1,10 @@
 class MarketMonitorsController < ApplicationController
   before_action :set_market_monitor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @market_monitors = MarketMonitor.all
+    authorize @market_monitors
   end
 
   def show
@@ -10,6 +12,7 @@ class MarketMonitorsController < ApplicationController
 
   def new
     @market_monitor = MarketMonitor.new
+    authorize @market_monitor
   end
 
   def edit
@@ -17,6 +20,7 @@ class MarketMonitorsController < ApplicationController
 
   def create
     @market_monitor = MarketMonitor.new(market_monitor_params)
+    authorize @market_monitor
 
     respond_to do |format|
       if @market_monitor.save
@@ -49,6 +53,7 @@ class MarketMonitorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_market_monitor
       @market_monitor = MarketMonitor.find(params[:id])
+      authorize @market_monitor
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
