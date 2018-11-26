@@ -20,10 +20,6 @@ class DailyHighLowPolicy < ApplicationPolicy
     return true if admin?
   end
 
-  def create?
-    return true if admin?
-  end
-
   def update?
     return true if admin?
   end
