@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'data_for_charts/thirteen_pct'
+
+  get 'charts/thirteen_percent'
+
   devise_for :users, controllers: { registration: "registrations"}
   root 'static_pages#home'
 
@@ -17,6 +21,14 @@ Rails.application.routes.draw do
     collection do
       post :fetch_price_history
     end
+  end
+
+  namespace :charts do
+    get 'view'
+  end
+
+  namespace :data_for_charts do
+    get 'thirteen_percent'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

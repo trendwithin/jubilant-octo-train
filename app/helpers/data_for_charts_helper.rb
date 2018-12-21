@@ -1,0 +1,2 @@
+module DataForChartsHelper
+end
