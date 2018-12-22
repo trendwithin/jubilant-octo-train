@@ -18,6 +18,6 @@ module Scanner
 
     # Dynamic Error Handling (for Views) Config
     #config.expections_app = self.routes
-    config.exception_handler = { dev: true }
+    # config.exception_handler = { dev: true }
   end
 end
