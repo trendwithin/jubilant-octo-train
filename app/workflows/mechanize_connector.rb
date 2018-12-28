@@ -1,16 +1,16 @@
 require 'mechanize'
 
-class MechanizeConnector
-  attr_reader :agent, :url
+class MechanizeConnector < Mechanize
+  attr_reader :url
 
   def initialize url
-    @agent = Mechanize.new
+    super
     @url = url
   end
 
-  def fetch_page_body max_attempts = 5
+  def mechanize_connector_fetch_page max_attempts = 5
     tries ||= 0
-    agent.get url
+    self.get url
 
     rescue SocketError => se
       if (tries += 1) <= max_attempts
