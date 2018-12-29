@@ -30,7 +30,7 @@ class FetchHistoricalData
   end
 
   def fetch_page
-    api_connection.fetch_page_body
+    api_connection.mechanize_connector_fetch_page
   end
 
   def parse_page_body

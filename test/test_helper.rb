@@ -24,6 +24,17 @@ class ActiveSupport::TestCase
         VCR.request_matchers.uri_without_param(:startDate)]
    }
   end
-
   # Add more helper methods to be used by all tests here...
+
+  def dummy_api_hit
+    # barchart daily data api hit return
+    {"status":{"code":200,"message":"Success."},"results":
+      [{"symbol":"AAPL","exchange":"BATS","name":"Apple Inc","dayCode":"R",
+        "serverTimestamp":"2018-12-28T13:32:27-06:00","mode":"i","lastPrice":157.51,
+        "tradeTimestamp":"2018-12-28T14:17:24-06:00","netChange":1.36,
+        "percentChange":0.87,"unitCode":"2","open":157.3,"high":157.65,
+        "low":154.55,"close":0,"flag":"","volume":1949701
+      }]
+    }
+  end
 end

@@ -1,8 +1,9 @@
 class FetchDailyData
   attr_reader  :symbol_list, :api_connection, :barchart_historical_data
 
-  def initialize obj
+  def initialize obj, api_connection
     @barchart_historical_data = obj
+    @api_connection = api_connection
   end
 
   def collect_stock_symbols
@@ -10,12 +11,18 @@ class FetchDailyData
   end
 
   def fetch_daily_price_data
-    symbol_list.each_slice(25) do |symbols|
-      url = build_url symbols
-      connection = connect url
-      fetch_page
-      body = response_body_results fetch_parsed_response_body_in_JSON
-      parse_body_data body
+    symbol_list.each_slice(3000) do |check|
+      check.each_slice(25) do |symbols|
+        url = build_url symbols
+        connect url
+        fetch_page
+        body = response_body_results fetch_parsed_response_body_in_JSON
+        if body.nil?
+          puts "#fetch_daily_price_data: url #{url}"
+        else
+          parse_body_data body
+        end
+      end
     end
   end
 
@@ -52,11 +59,11 @@ class FetchDailyData
   end
 
   def connect url
-    @api_connection = BarchartApiConnector.new url
+    api_connection.get url
   end
 
   def fetch_page
-    api_connection.fetch_page_body
+    api_connection.mechanize_connector_fetch_page
   end
 
   def fetch_parsed_response_body_in_JSON

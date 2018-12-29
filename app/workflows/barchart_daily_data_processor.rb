@@ -1,5 +1,5 @@
 class BarchartDailyDataProcessor
-
+  
   def format_daily_results obj
     format_obj = {}
     format_obj[:market_close_date] = DateTime.now.strftime("%d-%m-%Y")

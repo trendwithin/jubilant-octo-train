@@ -13,16 +13,16 @@ class MechanizeConnectorTest < ActiveSupport::TestCase
       @url = 'http://www.trendwithin.com/nopage'
       @data_parser = MechanizeConnector.new(@url)
       assert_raises Mechanize::ResponseCodeError do
-        @data_parser.fetch_page_body(1)
+        @data_parser.mechanize_connector_fetch_page(1)
       end
     end
   end
 
   test 'no connectivity raises socket error' do
     raises_exception = -> (a_url) { raise SocketError.new }
-    @connection.stub(:fetch_page_body, raises_exception) do
+    @connection.stub(:mechanize_connector_fetch_page, raises_exception) do
        assert_raises SocketError do
-         @connection.fetch_page_body @valid_url
+         @connection.mechanize_connector_fetch_page @valid_url
        end
     end
   end
