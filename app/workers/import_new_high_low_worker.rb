@@ -2,9 +2,10 @@ class ImportNewHighLowWorker < ProcessWorker
 
   def perform
     url = 'https://www.barchart.com/stocks/highs-lows/summary'
-    api_connection = MechanizeConnector.new(url)
-    daily_high_low = FetchDailyHighLow.new(api_connection)
-    daily_high_low.connect
-    daily_high_low.run
+    agent = MechanizeConnector.new(url)
+    agent.mechanize_connector_fetch_page
+    unless agent.page.nil?
+      daily_high_low = ProcessDailyHighLow.new(agent.page).run
+    end
   end
 end
