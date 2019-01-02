@@ -14,7 +14,7 @@ class MarketMonitor < ApplicationRecord
   validates :total_stocks, presence: true, numericality: { only_integer: true }
 
   def self.order_by_date_desc
-    order(:market_close_date)
+    order('market_close_date desc')
   end
 
   def self.monitor
