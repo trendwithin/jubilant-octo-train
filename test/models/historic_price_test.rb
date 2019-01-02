@@ -25,4 +25,12 @@ class HistoricPriceTest < ActiveSupport::TestCase
     expected = 2
     assert_equal expected, HistoricPrice.todays_records.count
   end
+
+  test 'retrieves ordered records desc' do
+    records = HistoricPrice.date_desc(2)
+    first_record = records.first
+    last_record = records.last
+    assert_equal "2018-05-10", first_record.market_close_date.strftime('%Y-%m-%d')
+    assert_equal "2017-05-10", last_record.market_close_date.strftime('%Y-%m-%d')
+  end
 end
