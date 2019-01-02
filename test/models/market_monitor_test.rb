@@ -4,7 +4,7 @@ class MarketMonitorTest < ActiveSupport::TestCase
 
   test '#order_by_date_desc' do
     values = MarketMonitor.order_by_date_desc
-    assert (values.each_cons(2).all?{|a,b| a.market_close_date <= b.market_close_date})
+    assert (values.each_cons(2).all?{|a,b| a.market_close_date >= b.market_close_date})
   end
 
   test 'monitor returns correct [:name]' do
@@ -17,7 +17,7 @@ class MarketMonitorTest < ActiveSupport::TestCase
 
   test 'monitor returns correct [:data]' do
     values = MarketMonitor.monitor
-    expected = [[10, 20], [200, 100]]
+    expected = [[20, 10], [100, 200]]
     data_values = []
     data = values.pluck(:data)
     data.each do |cell|
