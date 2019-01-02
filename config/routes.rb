@@ -25,11 +25,13 @@ Rails.application.routes.draw do
 
   namespace :charts do
     get 'view'
+    get 'google_charts'
   end
 
   namespace :data_for_charts do
     get 'thirteen_percent'
     get 'monitor'
+    get 'googs'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
