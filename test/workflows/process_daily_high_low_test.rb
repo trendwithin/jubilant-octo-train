@@ -79,7 +79,6 @@ class ProcessDailyHighLowTest < ActiveSupport::TestCase
       obj.send('fetch_page_body_data')
       obj.send('format_record')
       obj.send('clean_record_data')
-      byebug
       obj.record.each do |k, v|
         assert_equal Integer, v.class
       end
