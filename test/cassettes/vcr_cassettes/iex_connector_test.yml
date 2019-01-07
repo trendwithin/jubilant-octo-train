@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iextrading.com/1.0/stock/AAPL/quote
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 07 Jan 2019 17:53:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - ctoken=8f3fa71f070147c4bdd5f148b8b7e319; Domain=.iextrading.com; Path=/; Expires=Tue,
+        08 Jan 2019 05:53:53 GMT; Secure
+      Content-Security-Policy:
+      - default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self'
+        'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com
+        https://api.iextrading.com https://api.iextrading.com wss://iextrading.com
+        wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com; script-src
+        'self' 'unsafe-inline' 'unsafe-eval';
+      X-Content-Security-Policy:
+      - default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self'
+        'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com
+        https://api.iextrading.com https://api.iextrading.com wss://iextrading.com
+        wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com; script-src
+        'self' 'unsafe-inline' 'unsafe-eval';
+      Frame-Options:
+      - SAMEORIGIN
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+    body:
+      encoding: ASCII-8BIT
+      string: '{"symbol":"AAPL","companyName":"Apple Inc.","primaryExchange":"Nasdaq
+        Global Select","sector":"Technology","calculationPrice":"tops","open":148.7,"openTime":1546871400481,"close":148.26,"closeTime":1546635600686,"high":148.83,"low":145.9,"latestPrice":147.225,"latestSource":"IEX
+        real time price","latestTime":"12:53:46 PM","latestUpdate":1546883626341,"latestVolume":31077781,"iexRealtimePrice":147.225,"iexRealtimeSize":200,"iexLastUpdated":1546883626341,"delayedPrice":147.38,"delayedPriceTime":1546882730071,"extendedPrice":147.225,"extendedChange":0,"extendedChangePercent":0,"extendedPriceTime":1546883626341,"previousClose":148.26,"change":-1.035,"changePercent":-0.00698,"iexMarketPercent":0.03029,"iexVolume":941346,"avgTotalVolume":48008511,"iexBidPrice":147.18,"iexBidSize":100,"iexAskPrice":147.21,"iexAskSize":100,"marketCap":698641220550,"peRatio":12.4,"week52High":233.47,"week52Low":142,"ytdChange":-0.06815021276595742}'
+    http_version: 
+  recorded_at: Mon, 07 Jan 2019 17:53:53 GMT
+recorded_with: VCR 4.0.0

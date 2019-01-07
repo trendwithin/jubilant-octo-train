@@ -1,20 +1,7 @@
 class IexFetchDailyDataProcessor
-  attr_reader :symbols_not_found
-  def initialize
-    @symbols_not_found = []
-  end
+  attr_accessor :quote_body
 
-  def quote symbol
-    begin
-      quote = IEX::Resources::Quote.get("#{symbol}")
-    rescue IEX::Errors::ClientError => iex_client_error
-    rescue IEX::Errors::SymbolNotFoundError => iex_symbol_not_found_error
-      symbols_not_found << symbol
-    end
-    quote
-  end
-
-  def parse_quote_body quote_body
+  def parse_quote_body
     format_obj = {}
     format_obj[:market_close_date] = DateTime.now.strftime("%d-%m-%Y")
     format_obj[:open] = quote_body['open']
