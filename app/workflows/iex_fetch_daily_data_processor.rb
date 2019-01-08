@@ -23,4 +23,8 @@ class IexFetchDailyDataProcessor
     rescue ActiveRecord::RecordInvalid => invalid
     end
   end
+
+  def find_stock_symbol symbol
+    StockSymbol.find_by_symbol(symbol)
+  end
 end
