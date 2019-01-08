@@ -11,7 +11,7 @@ class IexFetchDailyData
   end
 
   def fetch_daily_price_data
-    symbol_list.each_slice(1) do |chunk|
+    symbol_list.each_slice(25) do |chunk|
       chunk.each do |symbol|
         body = connector.get_quote symbol
         if body.nil?

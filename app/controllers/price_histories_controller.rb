@@ -8,7 +8,7 @@ class PriceHistoriesController < ApplicationController
   end
 
   def fetch_price_history
-    FetchDailyPriceHistoryWorker.perform_async
+    ImportPriceHistoryFromIexWorker.perform_async
     redirect_to price_histories_path
   end
 end
