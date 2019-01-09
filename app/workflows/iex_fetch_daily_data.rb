@@ -7,7 +7,7 @@ class IexFetchDailyData
   end
 
   def collect_stock_symbols
-    @symbol_list = StockSymbol.limit(1).pluck(:symbol)
+    @symbol_list = StockSymbol.all.pluck(:symbol)
   end
 
   def fetch_daily_price_data
