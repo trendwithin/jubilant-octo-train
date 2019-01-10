@@ -8,4 +8,29 @@ class ErrorLoggerTest < ActiveSupport::TestCase
     report = logger.report
     assert_equal report, log
   end
+
+  test '#nil_symbol with single symbol' do
+    expected = {symbols_return_nil: ['NIL']}
+    error_logger = ErrorLogger.new 'logs'
+    error_logger.nil_symbol 'NIL'
+    result = error_logger.historic_data_errors
+    assert_equal expected, result
+  end
+
+  test '#nil_symbol with multiple symbols' do
+    expected = {symbols_return_nil: ['NIL', 'VAL']}
+    error_logger = ErrorLogger.new 'logs'
+    error_logger.nil_symbol 'NIL'
+    error_logger.nil_symbol 'VAL'
+    result = error_logger.historic_data_errors
+    assert_equal expected, result
+  end
+
+  test '#nil_symbols_report returns :symbols_return_nil' do
+    expected = ['NIL']
+    error_logger = ErrorLogger.new 'logs'
+    error_logger.nil_symbol 'NIL'
+    result = error_logger.nil_symbols_report
+    assert_equal expected, result
+  end
 end
