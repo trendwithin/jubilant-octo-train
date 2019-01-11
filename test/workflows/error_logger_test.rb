@@ -5,7 +5,7 @@ class ErrorLoggerTest < ActiveSupport::TestCase
   setup do
     @error_logger = ErrorLogger.new('logs')
   end
-  
+
   test 'returns log' do
     log = {new_highs: {body: 'Report', from: 'New Highs', error: 'Failure'}}
     logger = ErrorLogger.new(log)
@@ -63,6 +63,11 @@ class ErrorLoggerTest < ActiveSupport::TestCase
     file_name = 'nil_symbol_report.txt'
     @error_logger.create_error_data_file(file_date, file_name)
     assert @error_logger.error_data_file_exists?(file_date, file_name)
+  end
+
+  test '#read_file' do
+    @error_logger.read_file('file.txt')
+    puts
   end
 
   def teardown
