@@ -18,9 +18,10 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
+---
+--COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+-- Coment this out for Heroku
+---
 
 SET default_tablespace = '';
 
@@ -790,5 +791,3 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181030195946'),
 ('20181114182419'),
 ('20181115214837');
-
-
