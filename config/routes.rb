@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'maintenance_and_errors/invalid_symbols'
+
   get 'data_for_charts/thirteen_pct'
 
   get 'charts/thirteen_percent'
 
   devise_for :users, controllers: { registration: "registrations"}
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+  end
   root 'static_pages#home'
 
   require 'sidekiq/web'
