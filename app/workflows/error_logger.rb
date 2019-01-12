@@ -1,10 +1,11 @@
 class ErrorLogger
-  attr_reader :logs, :historic_data_errors, :root_dir
+  attr_reader :logs, :historic_data_errors, :root_dir, :maintenance_and_errors_dir
 
   def initialize logs
     @logs = logs
     @historic_data_errors = {}
     @root_dir = File.join(Rails.root, 'log', 'custom_log')
+    @maintenance_and_errors_dir = File.join(Rails.root, 'app', 'views', 'maintenance_and_errors', 'reports')
   end
 
   def report
@@ -44,6 +45,12 @@ class ErrorLogger
       return "#{root_dir}/file.txt"
     else
       return ""
+    end
+  end
+
+  def file_error_report
+    if File.exists?("#{maintenance_and_errors_dir}/_error_report.html.erb")
+      # TBD
     end
   end
 end
