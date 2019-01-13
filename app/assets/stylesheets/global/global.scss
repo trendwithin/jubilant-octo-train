@@ -126,9 +126,19 @@ h3 {
 .hero-text-box {
   position: absolute;
   width: 1140px;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  left: 20%;
   transform: translate(-50%, -50%);
+
+  h1 {
+    color: #fff;
+  }
+
+  h3 {
+    color: #fff;
+    text-align: center;
+    font-size: 200%;
+  }
 }
 
 /* ********************* */
