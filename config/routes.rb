@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'market_monitor_google_sheets/index'
+
   root 'static_pages#home'
 
   get 'maintenance_and_errors/invalid_symbols'
