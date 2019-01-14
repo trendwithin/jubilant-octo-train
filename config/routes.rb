@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
 
   get 'maintenance_and_errors/invalid_symbols'
 
@@ -6,11 +7,12 @@ Rails.application.routes.draw do
 
   get 'charts/thirteen_percent'
 
-  devise_for :users, controllers: { registration: "registrations"}
   devise_scope :user do
+    get "/users/sign_up",  :to => 'static_pages#home'
     get 'login', to: 'devise/sessions#new'
   end
-  root 'static_pages#home'
+  devise_for :users, controllers: { registration: "registrations"}
+
 
   require 'sidekiq/web'
   mount Sidekiq::Web => "/sidekiq"

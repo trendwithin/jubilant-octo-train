@@ -42,12 +42,6 @@ section {
 /* ********************* */
 /* Headings */
 /* ********************* */
-header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), image-url('sunset_background');
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
-}
 
 h1,
 h2,
@@ -123,13 +117,6 @@ h3 {
 /* HERO                  */
 /* ********************* */
 
-.hero-text-box {
-  position: absolute;
-  width: 1140px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* ********************* */
 /* Generic Links */
@@ -252,4 +239,12 @@ table.center {
 }
 .one-em-margin-top {
   margin-top: 1em;
+}
+
+.post-header-copy {
+  padding-top: 1em;
+}
+
+.centered {
+  text-align: center;
 }
