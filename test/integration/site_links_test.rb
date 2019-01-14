@@ -7,8 +7,7 @@ class SiteLinksTest < ActionDispatch::IntegrationTest
 
   test 'navbar links guest user' do
     get root_path
-    assert_select "a[href=?]", new_user_session_path
-    assert_select "a", count: 1
+    assert_select "a[href=?]", new_user_session_path, count: 0
   end
 
   test 'navbar links admin user' do
