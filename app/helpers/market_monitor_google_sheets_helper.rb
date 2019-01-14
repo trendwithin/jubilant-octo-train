@@ -1,0 +1,2 @@
+module MarketMonitorGoogleSheetsHelper
+end
