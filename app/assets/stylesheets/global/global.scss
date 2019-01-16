@@ -1,3 +1,4 @@
+@import 'variables';
 /* ************ */
 /* BASIC SETUP */
 /* *********** */
@@ -17,6 +18,14 @@ html {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
+
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), image-url('sunset_background');
+  background-size: cover;
+  background-position: center;
+  height: 15vh;
+}
+
 
 .clearfix { zoom: 1}
 .clearfix:after {
@@ -247,4 +256,67 @@ table.center {
 
 .centered {
   text-align: center;
+}
+
+// /* ********************* */
+// /* Tables                */
+// /* ********************* */
+
+tr:nth-child(odd) {
+  background: $peach ;
+}
+tr:nth-child(even) {
+  background: $tertiary;
+}
+
+tr.tr-header {
+  background: $secondary;
+  font-size: 80%;
+  th {
+      border: 1px solid black;
+  }
+  th:last-child {
+    border: none;
+  }
+}
+
+td {
+  padding-left: 1%;
+  padding-right: 1%;
+  text-align: center;
+  a:link {
+    color: $secondary;
+  }
+  a:visited {
+    color: $primary;
+  }
+}
+
+table.market_monitor{
+  margin-top: 1em;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+td.date-font{
+  width: 15%;
+  font-size: 80%;
+}
+
+.separator {
+  padding: 1em;
+}
+
+form {
+  padding: 2em;
+  background: $primary;
+  color: $secondary;
+}
+
+.field {
+  margin-top: 2%;
+  label {
+    text-transform: uppercase;
+
+  }
 }

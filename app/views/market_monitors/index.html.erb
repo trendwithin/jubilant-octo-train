@@ -1,21 +1,18 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Market Monitors</h1>
-
-<table>
+<table class='market_monitor'>
   <thead>
-    <tr>
-      <th>Market close date</th>
-      <th>Up four pct daily</th>
-      <th>Down four pct daily</th>
-      <th>Up twenty five pct quarter</th>
-      <th>Down twenty five pct quarter</th>
-      <th>Up twenty five pct month</th>
-      <th>Down twenty five pct month</th>
-      <th>Up thirteen pct six weeks</th>
-      <th>Down thirteen pct six weeks</th>
-      <th>Up fifty pct month</th>
-      <th>Down fifty pct month</th>
+    <tr class='tr-header'>
+      <th>Date</th>
+      <th>4% +</th>
+      <th>4% -</th>
+      <th>25% Q+</th>
+      <th>25% Q-</th>
+      <th>25% M+</th>
+      <th>25% M-</th>
+      <th>13% +</th>
+      <th>13% -</th>
+      <th>50% M+</th>
+      <th>50% M-</th>
       <th>Total stocks</th>
       <th colspan="3"></th>
     </tr>
@@ -24,7 +21,7 @@
   <tbody>
     <% @market_monitors.each do |market_monitor| %>
       <tr>
-        <td><%= market_monitor.market_close_date %></td>
+        <td class='date-font'><%= market_monitor.market_close_date %></td>
         <td><%= market_monitor.up_four_pct_daily %></td>
         <td><%= market_monitor.down_four_pct_daily %></td>
         <td><%= market_monitor.up_twenty_five_pct_quarter %></td>
