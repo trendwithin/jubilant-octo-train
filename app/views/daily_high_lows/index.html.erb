@@ -15,12 +15,12 @@
   </div>
 </div>
 
-<h1 class='high_low_header'>Daily High Lows</h1>
+<h1 class='high_low_header centered'>Daily High Lows</h1>
 </div>
 
-<table>
+<table class='market_monitor'>
   <thead>
-    <tr>
+    <tr class='tr-header'>
       <th class='daily_high_low_heading'>Date</th>
       <th class='daily_high_low_heading'>1M Highs</th>
       <th class='daily_high_low_heading'>1M Lows</th>
@@ -40,7 +40,7 @@
   <tbody>
     <% @daily_high_lows.each do |daily_high_low| %>
       <tr>
-        <td class='daily_high_low_data'><%= daily_high_low.market_close_date %></td>
+        <td class='daily_high_low_data date-font'><%= daily_high_low.market_close_date %></td>
         <td class='daily_high_low_data'><%= daily_high_low.one_month_high %></td>
         <td class='daily_high_low_data'><%= daily_high_low.one_month_low %></td>
         <td class='daily_high_low_data'><%= daily_high_low.three_month_high %></td>

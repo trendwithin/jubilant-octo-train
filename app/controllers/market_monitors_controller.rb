@@ -3,7 +3,7 @@ class MarketMonitorsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @market_monitors = MarketMonitor.all
+    @market_monitors = MarketMonitor.limit(250).order_by_date_desc
     authorize @market_monitors
   end
 
