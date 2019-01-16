@@ -19,6 +19,8 @@ gem 'iex-ruby-client', '~> 0.4.4'
 
 gem 'groupdate', '~> 2.5'
 
+gem 'newrelic_rpm', '~> 3.16', '>= 3.16.0.318'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
