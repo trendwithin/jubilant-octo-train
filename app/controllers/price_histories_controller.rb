@@ -9,6 +9,6 @@ class PriceHistoriesController < ApplicationController
 
   def fetch_price_history
     ImportPriceHistoryFromIexWorker.perform_async
-    redirect_to price_histories_path
+    redirect_to root_path
   end
 end
