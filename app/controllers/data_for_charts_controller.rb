@@ -18,4 +18,9 @@ class DataForChartsController < ApplicationController
 
     render json: @formatted_results
  end
+
+ def high_low_data
+   high_low_data = DailyHighLow.all
+   render json: high_low_data
+ end
 end
