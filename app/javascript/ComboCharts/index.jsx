@@ -31,6 +31,7 @@ class DisplayComboChart extends React.Component {
           color: 'green',
         },
       },
+      height: 900,
     };
     return options;
   };
