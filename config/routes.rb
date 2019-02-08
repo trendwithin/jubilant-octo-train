@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'monitor'
     get 'googs'
     get 'high_low_data'
+    get 'stock_price_data'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
