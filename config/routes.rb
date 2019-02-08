@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   namespace :charts do
     get 'view'
     get 'google_charts'
+    get 'candlestick_charts'
   end
 
   namespace :data_for_charts do
@@ -43,6 +44,8 @@ Rails.application.routes.draw do
     get 'googs'
     get 'high_low_data'
     get 'stock_price_data'
+    get 'candlestick_charts'
+
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
