@@ -15,4 +15,8 @@ module ApplicationHelper
       'shared/empty'
     end
   end
+
+  def day_month_year created_at
+    created_at.strftime("%m-%d-%Y")
+  end
 end

@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
+<h1 class="centered">Tradeable Universes</h1>
+<p class="centered">
+  <%= link_to 'New Tradeable Universe', new_tradeable_universe_path %>
+</p>
 
-<h1>Tradeable Universes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Three month</th>
-      <th>Six month</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tradeable_universes.each do |tradeable_universe| %>
+<div class="center-inline">
+  <table class='center'>
+    <thead>
       <tr>
+        <th>Date</th>
+        <th>Three month</th>
+        <th>Six month</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tradeable_universes.each do |tradeable_universe| %>
+      <tr>
+        <td><%= day_month_year(tradeable_universe.created_at) %> </td>
         <td><%= tradeable_universe.three_month %></td>
         <td><%= tradeable_universe.six_month %></td>
         <td><%= link_to 'Edit', edit_tradeable_universe_path(tradeable_universe) %></td>
         <td id=<%= dom_id(tradeable_universe) %>><%= link_to 'Destroy', tradeable_universe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tradeable Universe', new_tradeable_universe_path %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
