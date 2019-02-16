@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'view'
     get 'google_charts'
     get 'candlestick_charts'
+    get 'barcharts'
   end
 
   namespace :data_for_charts do

@@ -7,4 +7,7 @@ class ChartsController < ApplicationController
 
   def candlestick_charts
   end
+
+  def barcharts
+  end
 end
