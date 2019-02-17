@@ -23,4 +23,11 @@ class DataForChartsController < ApplicationController
    high_low_data = DailyHighLow.all
    render json: high_low_data
  end
+
+ def stock_price_data
+   symbol = StockSymbol.find_by_symbol('SPY')
+   price_data = symbol.historic_prices.date_asc(50)
+
+   render json: price_data
+ end
 end

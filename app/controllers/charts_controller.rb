@@ -4,4 +4,10 @@ class ChartsController < ApplicationController
 
   def google_charts
   end
+
+  def candlestick_charts
+  end
+
+  def barcharts
+  end
 end

@@ -17,6 +17,7 @@
     <tbody>
       <% @five_period_leaders.each do |five_period_leader| %>
       <tr class='centered'>
+        <td><%= day_month_year(five_period_leader.created_at) %></td>
         <td><%= five_period_leader.positive %></td>
         <td><%= five_period_leader.negative %></td>
         <td><%= link_to 'Edit', edit_five_period_leader_path(five_period_leader) %></td>
