@@ -23,7 +23,7 @@ header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), image-url('sunset_background');
   background-size: cover;
   background-position: center;
-  height: 15vh;
+  height: 50vh;
 }
 
 
@@ -120,6 +120,28 @@ h3 {
   border-bottom: 2px solid #e67e22;
 }
 
+
+.mobile-nav {
+  float: left;
+  list-style: none;
+  margin-top: 60px;
+}
+
+.mobile-nav li {
+  display: none;
+  margin-left: 40px;
+}
+
+.mobile-nav li a:link,
+.mobile-nav li a:visited {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
+  padding: 8px 0;
+}
 
 
 /* ********************* */

@@ -4,15 +4,8 @@
 @import "global/normalize";
 @import "global/global";
 @import "global/grid";
-
-
-
-header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), image-url('sunset_background');
-  background-size: cover;
-  background-position: center;
-  height: 50vh;
-}
+@import "mobile/mobile_menu";
+@import "mobile/mobile_navigation";
 
 .hero-text-box {
   position: absolute;
@@ -23,11 +16,12 @@ header {
 
   h1 {
     color: #fff;
+    font-size: 150%;
   }
 
   h3 {
     color: #fff;
-    font-size: 150%;
+    font-size: 110%;
     margin: 0;
     padding-left: 0;
   }

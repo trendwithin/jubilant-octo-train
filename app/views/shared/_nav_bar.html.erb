@@ -1,3 +1,4 @@
+<%= render 'layouts/navigation/mobile/mobile_menu' %>
 <header>
   <nav>
     <div class="row">
@@ -5,7 +6,9 @@
         <%= render navigation_links %>
         <%= render logout_link %>
       </ul>
+      <ul class="mobile-nav">
+        <%= render mobile_navigation_links %>
+      </ul>
     </div>
   </nav>
-
 </header>

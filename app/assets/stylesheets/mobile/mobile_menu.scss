@@ -1,0 +1,111 @@
+// inspired and heavily pilfered from https://codepen.io/IamAhmedHamed/pen/EremLG?editors=1111
+
+.mobile-links.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #fff;
+  line-height: 1rem;
+  padding: 0.5rem;
+  min-height: 400px;
+  height: 100%;
+
+  ul {
+     list-style-type: none;
+  }
+}
+
+
+.nav-tgl {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  z-index: 100;
+  right: 30px;
+  top: 30px;
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  background: #fff;
+	box-shadow: 0px 4px 24px rgba(#000, 0.24);
+  line-height: 0.6;
+  text-align: center;
+
+	> span {
+		display: inline-block;
+		position: relative;
+		height: 2px;
+		width: 34px;
+		border-radius: 1px;
+		background: #293335;
+		vertical-align: middle;
+
+		&:before, &:after {
+		  display: inline-block;
+			position: absolute;
+			content: "";
+			height: 2px;
+			border-radius: 1px;
+			background: #293335;
+			transition: all 200ms;
+		}
+		&:before {
+		  top: -11px;
+			left: 3px;
+			width: 28px;
+		}
+		&:after {
+		  top: 11px;
+			left: 6px;
+			width: 22px;
+		}
+	}
+
+	&:focus {outline: none}
+
+	&:hover > span:after, &:hover > span:before {
+		width: 34px;
+		left: 0;
+	}
+
+	&.toggled > span {
+		height: 0;
+		&:after, &:before {
+		  top: 0px;
+			left: 0;
+			width: 34px;
+		}
+		&:after {
+		  transform: rotate(-45deg);
+		}
+		&:before {
+			transform: rotate(45deg);
+		}
+	}
+}
+
+.mobile-links:before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.33);
+  transition: all 500ms ease-in-out;
+
+  clip-path: circle(30px at calc(100% - 65px) 65px);
+  visibility: hidden;
+}
+
+.flex-container {
+  display: none;
+  justify-content: center;
+  min-height: 100%;
+  height: 100%;
+  background: #fff;
+  background: aliceblue;
+}
