@@ -1,11 +1,13 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'global/variables';
 @import "global/normalize";
 @import "global/global";
 @import "global/grid";
 @import "mobile/mobile_menu";
 @import "mobile/mobile_navigation";
+
 
 .hero-text-box {
   position: absolute;
@@ -26,3 +28,35 @@
     padding-left: 0;
   }
 }
+
+.body-flex-grid {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  width: 100%;
+}
+
+.static-body-copy {
+  padding: 0.25em;
+}
+
+.static-body-post {
+  margin-left: 2em;
+  margin-right: 2em;
+  padding: 0, 0.5em;
+}
+
+.static-body-blog {
+  background: rgba($peach, 0.5);
+}
+
+.flex-col {
+  width: 32%;
+  background: rgba($peach, 0.5);
+  color: #000;
+}
+
+
+@import "mobile/static_body_content";
