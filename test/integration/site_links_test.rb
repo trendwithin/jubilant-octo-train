@@ -19,6 +19,5 @@ class SiteLinksTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", five_period_leaders_path
     assert_select "a[href=?]", new_price_history_path
     assert_select "a[href=?]", new_tradeable_universe_path
-    assert_select "a", count: 6
   end
 end
