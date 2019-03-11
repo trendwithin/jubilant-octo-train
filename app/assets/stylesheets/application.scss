@@ -16,6 +16,7 @@
 @import "global/global";
 @import "global/grid";
 @import "global/variables";
+@import 'header_navigation/header_navigation';
 @import "mobile/mobile_menu";
 @import "mobile/mobile_navigation";
 
@@ -24,19 +25,11 @@
   margin-right: 25%;
   width: 50%;
 }
- input, textarea, select, option {
-   border: solid thin #888;
-   box-sizing: border-box;
-   font-size: 1em;
-   padding: 0.5em;
-   width: 100%
- }
 
- // .flex-container {
- //   display: none;
- //   justify-content: center;
- //   min-height: 100%;
- //   height: 100%;
- //   background: #fff;
- //   background: aliceblue;
- // }
+input, textarea, select, option {
+ border: solid thin #888;
+ box-sizing: border-box;
+ font-size: 1em;
+ padding: 0.5em;
+ width: 100%
+}

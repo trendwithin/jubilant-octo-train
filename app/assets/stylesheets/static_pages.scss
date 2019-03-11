@@ -5,6 +5,7 @@
 @import "global/normalize";
 @import "global/global";
 @import "global/grid";
+@import 'header_navigation/header_navigation';
 @import "mobile/mobile_menu";
 @import "mobile/mobile_navigation";
 
@@ -13,7 +14,7 @@
   position: absolute;
   width: 1140px;
   top: 30%;
-  left: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
 
   h1 {
