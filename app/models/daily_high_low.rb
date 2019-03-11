@@ -7,4 +7,8 @@ class DailyHighLow < ApplicationRecord
   validates :year_to_date_high,:year_to_date_low, presence: true
   validates :market_close_date, presence: true
   validates :market_close_date, uniqueness: true
+
+  def self.order_by_date_desc
+    order('market_close_date desc')
+  end
 end

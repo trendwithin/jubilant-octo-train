@@ -4,7 +4,7 @@ class DailyHighLowsController < ApplicationController
 
 
   def index
-    @daily_high_lows = DailyHighLow.all
+    @daily_high_lows = DailyHighLow.all.order_by_date_desc
     authorize @daily_high_lows
   end
 
