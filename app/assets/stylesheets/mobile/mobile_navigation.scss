@@ -1,0 +1,27 @@
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* mobile portrai and landscape */
+// @import 'mobile_menu';
+  header {
+    height: 10vh;
+  }
+
+  .hero-text-box {
+    display: none;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    margin-top: 10px;
+  }
+
+  .mobile-nav li{
+    display: inline-block;
+  }
+
+  .nav-tgl {
+    display: inline-block;
+  }
+}

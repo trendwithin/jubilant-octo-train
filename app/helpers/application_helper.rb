@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def mobile_navigation_links
+    'layouts/navigation/links/mobile_links'
+  end
+
   def logout_link
     if user_signed_in? && current_user.admin?
       'layouts/navigation/links/signed_in_links'

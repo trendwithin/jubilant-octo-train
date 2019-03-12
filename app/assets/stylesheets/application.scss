@@ -16,19 +16,20 @@
 @import "global/global";
 @import "global/grid";
 @import "global/variables";
-
-
-
+@import 'header_navigation/header_navigation';
+@import "mobile/mobile_menu";
+@import "mobile/mobile_navigation";
 
 #stock_symbol_form {
   margin-left: 25%;
   margin-right: 25%;
   width: 50%;
 }
- input, textarea, select, option {
-   border: solid thin #888;
-   box-sizing: border-box;
-   font-size: 1em;
-   padding: 0.5em;
-   width: 100%
- }
+
+input, textarea, select, option {
+ border: solid thin #888;
+ box-sizing: border-box;
+ font-size: 1em;
+ padding: 0.5em;
+ width: 100%
+}
