@@ -18,10 +18,9 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
----
---COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
--- Coment this out for Heroku
----
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
 
 SET default_tablespace = '';
 
@@ -753,6 +752,27 @@ CREATE INDEX index_five_period_leaders_on_positive_and_negative ON public.five_p
 
 
 --
+-- Name: index_historic_prices_on_market_close_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_historic_prices_on_market_close_date ON public.historic_prices USING btree (market_close_date);
+
+
+--
+-- Name: index_historic_prices_on_stock_symbol_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_historic_prices_on_stock_symbol_id ON public.historic_prices USING btree (stock_symbol_id);
+
+
+--
+-- Name: index_stock_symbols_on_symbol; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_stock_symbols_on_symbol ON public.stock_symbols USING btree (symbol);
+
+
+--
 -- Name: index_tradeable_universes_on_three_month_and_six_month; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -774,6 +794,14 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: historic_prices fk_rails_1c59e2b330; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.historic_prices
+    ADD CONSTRAINT fk_rails_1c59e2b330 FOREIGN KEY (stock_symbol_id) REFERENCES public.stock_symbols(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -790,4 +818,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180918204931'),
 ('20181030195946'),
 ('20181114182419'),
-('20181115214837');
+('20181115214837'),
+('20190321231721'),
+('20190322142521'),
+('20190325232733'),
+('20190325232925');
+
+
