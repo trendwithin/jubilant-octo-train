@@ -590,6 +590,51 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Name: stock_symbols stock_symbols_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.stock_symbols
+    ADD CONSTRAINT stock_symbols_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: two_years_of_data_reports; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.two_years_of_data_reports AS
+ SELECT row_to_json(jt.*) AS row_to_json
+   FROM ( SELECT t1.symbol,
+            t1.market_close_date,
+            t1.open,
+            t1.high,
+            t1.low,
+            t1.close,
+            t1.volume
+           FROM ( SELECT stock_symbols.symbol,
+                    historic_prices.market_close_date,
+                    historic_prices.open,
+                    historic_prices.high,
+                    historic_prices.low,
+                    historic_prices.close,
+                    historic_prices.volume,
+                    count(*) AS count,
+                    row_number() OVER (PARTITION BY stock_symbols.symbol ORDER BY historic_prices.market_close_date DESC) AS rno
+                   FROM (public.stock_symbols
+                     JOIN public.historic_prices ON ((stock_symbols.id = historic_prices.stock_symbol_id)))
+                  WHERE (stock_symbols.symbol IN ( SELECT stock_symbols_1.symbol
+                           FROM (public.stock_symbols stock_symbols_1
+                             JOIN public.historic_prices historic_prices_1 ON ((stock_symbols_1.id = historic_prices_1.stock_symbol_id)))
+                          GROUP BY stock_symbols_1.id
+                         HAVING (count(*) >= 500)))
+                  GROUP BY stock_symbols.symbol, historic_prices.market_close_date, historic_prices.open, historic_prices.high, historic_prices.low, historic_prices.close, historic_prices.volume
+                  ORDER BY stock_symbols.symbol, historic_prices.market_close_date) t1
+          WHERE (t1.rno <= 500)
+          GROUP BY t1.symbol, t1.market_close_date, t1.open, t1.high, t1.low, t1.close, t1.volume
+          ORDER BY t1.symbol, t1.market_close_date) jt
+  WITH NO DATA;
+
+
+--
 -- Name: all_time_highs all_time_highs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -683,14 +728,6 @@ ALTER TABLE ONLY public.schema_migrations
 
 ALTER TABLE ONLY public.sectors
     ADD CONSTRAINT sectors_pkey PRIMARY KEY (id);
-
-
---
--- Name: stock_symbols stock_symbols_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.stock_symbols
-    ADD CONSTRAINT stock_symbols_pkey PRIMARY KEY (id);
 
 
 --
@@ -822,6 +859,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190321231721'),
 ('20190322142521'),
 ('20190325232733'),
-('20190325232925');
+('20190325232925'),
+('20190327192317');
 
 
