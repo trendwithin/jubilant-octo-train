@@ -20,6 +20,7 @@ gem 'scenic', '~> 1.4'
 
 gem 'groupdate', '~> 2.5'
 
+gem 'pghero', '~> 1.7'
 gem 'newrelic_rpm', '~> 3.16', '>= 3.16.0.318'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
