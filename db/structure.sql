@@ -18,10 +18,23 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
----
---COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
--- Coment this out for Heroku
----
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
+
 
 SET default_tablespace = '';
 
@@ -211,6 +224,272 @@ ALTER SEQUENCE public.fifty_two_week_lows_id_seq OWNED BY public.fifty_two_week_
 
 
 --
+-- Name: historic_prices; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.historic_prices (
+    id integer NOT NULL,
+    market_close_date date,
+    open numeric,
+    high numeric,
+    low numeric,
+    close numeric,
+    volume integer,
+    net_change numeric,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone DEFAULT now(),
+    stock_symbol_id integer
+);
+
+
+--
+-- Name: stock_symbols; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.stock_symbols (
+    id integer NOT NULL,
+    symbol text,
+    company_name text,
+    sector_id integer,
+    industry_id integer,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone DEFAULT now()
+);
+
+
+--
+-- Name: first_five_hundred_period_new_high_reports; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.first_five_hundred_period_new_high_reports AS
+ SELECT t2.symbol
+   FROM ( SELECT t.id,
+            t.symbol,
+            t.company_name,
+            t.sector_id,
+            t.industry_id,
+            t.created_at,
+            t.updated_at,
+            t.id_1 AS id,
+            t.market_close_date,
+            t.open,
+            t.high,
+            t.low,
+            t.close,
+            t.volume,
+            t.net_change,
+            t.created_at_1 AS created_at,
+            t.updated_at_1 AS updated_at,
+            t.stock_symbol_id,
+            t.rno,
+            max(t.high) FILTER (WHERE (t.rno <= 500)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+           FROM ( SELECT stock_symbols.id,
+                    stock_symbols.symbol,
+                    stock_symbols.company_name,
+                    stock_symbols.sector_id,
+                    stock_symbols.industry_id,
+                    stock_symbols.created_at,
+                    stock_symbols.updated_at,
+                    historic_prices.id,
+                    historic_prices.market_close_date,
+                    historic_prices.open,
+                    historic_prices.high,
+                    historic_prices.low,
+                    historic_prices.close,
+                    historic_prices.volume,
+                    historic_prices.net_change,
+                    historic_prices.created_at,
+                    historic_prices.updated_at,
+                    historic_prices.stock_symbol_id,
+                    row_number() OVER (PARTITION BY stock_symbols.symbol ORDER BY historic_prices.market_close_date DESC) AS rno
+                   FROM (public.stock_symbols
+                     JOIN public.historic_prices ON ((stock_symbols.id = historic_prices.stock_symbol_id)))
+                  WHERE (stock_symbols.symbol IN ( SELECT stock_symbols_1.symbol
+                           FROM (public.stock_symbols stock_symbols_1
+                             JOIN public.historic_prices historic_prices_1 ON ((stock_symbols_1.id = historic_prices_1.stock_symbol_id)))
+                          GROUP BY stock_symbols_1.symbol
+                         HAVING (count(stock_symbols_1.symbol) >= 500)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
+          WHERE (t.rno <= 500)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
+  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 250) AND (t2.close = t2.second_max)))
+  WITH NO DATA;
+
+
+--
+-- Name: first_one_hundred_twenty_six_period_new_high_reports; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.first_one_hundred_twenty_six_period_new_high_reports AS
+ SELECT t2.symbol
+   FROM ( SELECT t.id,
+            t.symbol,
+            t.company_name,
+            t.sector_id,
+            t.industry_id,
+            t.created_at,
+            t.updated_at,
+            t.id_1 AS id,
+            t.market_close_date,
+            t.open,
+            t.high,
+            t.low,
+            t.close,
+            t.volume,
+            t.net_change,
+            t.created_at_1 AS created_at,
+            t.updated_at_1 AS updated_at,
+            t.stock_symbol_id,
+            t.rno,
+            max(t.high) FILTER (WHERE (t.rno <= 126)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+           FROM ( SELECT stock_symbols.id,
+                    stock_symbols.symbol,
+                    stock_symbols.company_name,
+                    stock_symbols.sector_id,
+                    stock_symbols.industry_id,
+                    stock_symbols.created_at,
+                    stock_symbols.updated_at,
+                    historic_prices.id,
+                    historic_prices.market_close_date,
+                    historic_prices.open,
+                    historic_prices.high,
+                    historic_prices.low,
+                    historic_prices.close,
+                    historic_prices.volume,
+                    historic_prices.net_change,
+                    historic_prices.created_at,
+                    historic_prices.updated_at,
+                    historic_prices.stock_symbol_id,
+                    row_number() OVER (PARTITION BY stock_symbols.symbol ORDER BY historic_prices.market_close_date DESC) AS rno
+                   FROM (public.stock_symbols
+                     JOIN public.historic_prices ON ((stock_symbols.id = historic_prices.stock_symbol_id)))
+                  WHERE (stock_symbols.symbol IN ( SELECT stock_symbols_1.symbol
+                           FROM (public.stock_symbols stock_symbols_1
+                             JOIN public.historic_prices historic_prices_1 ON ((stock_symbols_1.id = historic_prices_1.stock_symbol_id)))
+                          GROUP BY stock_symbols_1.symbol
+                         HAVING (count(stock_symbols_1.symbol) >= 126)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
+          WHERE (t.rno <= 126)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
+  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 126) AND (t2.close = t2.second_max)))
+  WITH NO DATA;
+
+
+--
+-- Name: first_sixty_three_period_new_high_reports; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.first_sixty_three_period_new_high_reports AS
+ SELECT t2.symbol
+   FROM ( SELECT t.id,
+            t.symbol,
+            t.company_name,
+            t.sector_id,
+            t.industry_id,
+            t.created_at,
+            t.updated_at,
+            t.id_1 AS id,
+            t.market_close_date,
+            t.open,
+            t.high,
+            t.low,
+            t.close,
+            t.volume,
+            t.net_change,
+            t.created_at_1 AS created_at,
+            t.updated_at_1 AS updated_at,
+            t.stock_symbol_id,
+            t.rno,
+            max(t.high) FILTER (WHERE (t.rno <= 63)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+           FROM ( SELECT stock_symbols.id,
+                    stock_symbols.symbol,
+                    stock_symbols.company_name,
+                    stock_symbols.sector_id,
+                    stock_symbols.industry_id,
+                    stock_symbols.created_at,
+                    stock_symbols.updated_at,
+                    historic_prices.id,
+                    historic_prices.market_close_date,
+                    historic_prices.open,
+                    historic_prices.high,
+                    historic_prices.low,
+                    historic_prices.close,
+                    historic_prices.volume,
+                    historic_prices.net_change,
+                    historic_prices.created_at,
+                    historic_prices.updated_at,
+                    historic_prices.stock_symbol_id,
+                    row_number() OVER (PARTITION BY stock_symbols.symbol ORDER BY historic_prices.market_close_date DESC) AS rno
+                   FROM (public.stock_symbols
+                     JOIN public.historic_prices ON ((stock_symbols.id = historic_prices.stock_symbol_id)))
+                  WHERE (stock_symbols.symbol IN ( SELECT stock_symbols_1.symbol
+                           FROM (public.stock_symbols stock_symbols_1
+                             JOIN public.historic_prices historic_prices_1 ON ((stock_symbols_1.id = historic_prices_1.stock_symbol_id)))
+                          GROUP BY stock_symbols_1.symbol
+                         HAVING (count(stock_symbols_1.symbol) >= 63)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
+          WHERE (t.rno <= 63)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
+  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 63) AND (t2.close = t2.second_max)))
+  WITH NO DATA;
+
+
+--
+-- Name: first_two_hundred_fifty_period_new_high_reports; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.first_two_hundred_fifty_period_new_high_reports AS
+ SELECT t2.symbol
+   FROM ( SELECT t.id,
+            t.symbol,
+            t.company_name,
+            t.sector_id,
+            t.industry_id,
+            t.created_at,
+            t.updated_at,
+            t.id_1 AS id,
+            t.market_close_date,
+            t.open,
+            t.high,
+            t.low,
+            t.close,
+            t.volume,
+            t.net_change,
+            t.created_at_1 AS created_at,
+            t.updated_at_1 AS updated_at,
+            t.stock_symbol_id,
+            t.rno,
+            max(t.high) FILTER (WHERE (t.rno <= 250)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+           FROM ( SELECT stock_symbols.id,
+                    stock_symbols.symbol,
+                    stock_symbols.company_name,
+                    stock_symbols.sector_id,
+                    stock_symbols.industry_id,
+                    stock_symbols.created_at,
+                    stock_symbols.updated_at,
+                    historic_prices.id,
+                    historic_prices.market_close_date,
+                    historic_prices.open,
+                    historic_prices.high,
+                    historic_prices.low,
+                    historic_prices.close,
+                    historic_prices.volume,
+                    historic_prices.net_change,
+                    historic_prices.created_at,
+                    historic_prices.updated_at,
+                    historic_prices.stock_symbol_id,
+                    row_number() OVER (PARTITION BY stock_symbols.symbol ORDER BY historic_prices.market_close_date DESC) AS rno
+                   FROM (public.stock_symbols
+                     JOIN public.historic_prices ON ((stock_symbols.id = historic_prices.stock_symbol_id)))
+                  WHERE (stock_symbols.symbol IN ( SELECT stock_symbols_1.symbol
+                           FROM (public.stock_symbols stock_symbols_1
+                             JOIN public.historic_prices historic_prices_1 ON ((stock_symbols_1.id = historic_prices_1.stock_symbol_id)))
+                          GROUP BY stock_symbols_1.symbol
+                         HAVING (count(stock_symbols_1.symbol) >= 250)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
+          WHERE (t.rno <= 250)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
+  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 250) AND (t2.close = t2.second_max)))
+  WITH NO DATA;
+
+
+--
 -- Name: five_period_leaders; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -240,25 +519,6 @@ CREATE SEQUENCE public.five_period_leaders_id_seq
 --
 
 ALTER SEQUENCE public.five_period_leaders_id_seq OWNED BY public.five_period_leaders.id;
-
-
---
--- Name: historic_prices; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.historic_prices (
-    id integer NOT NULL,
-    market_close_date date,
-    open numeric,
-    high numeric,
-    low numeric,
-    close numeric,
-    volume integer,
-    net_change numeric,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone DEFAULT now(),
-    stock_symbol_id integer
-);
 
 
 --
@@ -394,21 +654,6 @@ CREATE SEQUENCE public.sectors_id_seq
 --
 
 ALTER SEQUENCE public.sectors_id_seq OWNED BY public.sectors.id;
-
-
---
--- Name: stock_symbols; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.stock_symbols (
-    id integer NOT NULL,
-    symbol text,
-    company_name text,
-    sector_id integer,
-    industry_id integer,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone DEFAULT now()
-);
 
 
 --
@@ -753,6 +998,27 @@ CREATE INDEX index_five_period_leaders_on_positive_and_negative ON public.five_p
 
 
 --
+-- Name: index_historic_prices_on_market_close_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_historic_prices_on_market_close_date ON public.historic_prices USING btree (market_close_date);
+
+
+--
+-- Name: index_historic_prices_on_stock_symbol_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_historic_prices_on_stock_symbol_id ON public.historic_prices USING btree (stock_symbol_id);
+
+
+--
+-- Name: index_stock_symbols_on_symbol; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_stock_symbols_on_symbol ON public.stock_symbols USING btree (symbol);
+
+
+--
 -- Name: index_tradeable_universes_on_three_month_and_six_month; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -774,6 +1040,14 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: historic_prices fk_rails_1c59e2b330; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.historic_prices
+    ADD CONSTRAINT fk_rails_1c59e2b330 FOREIGN KEY (stock_symbol_id) REFERENCES public.stock_symbols(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -790,4 +1064,14 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180918204931'),
 ('20181030195946'),
 ('20181114182419'),
-('20181115214837');
+('20181115214837'),
+('20190321231721'),
+('20190322142521'),
+('20190325232733'),
+('20190325232925'),
+('20190403013341'),
+('20190404172901'),
+('20190404172926'),
+('20190404172942');
+
+

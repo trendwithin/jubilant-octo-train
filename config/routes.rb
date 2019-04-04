@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   require 'sidekiq/web'
   mount Sidekiq::Web => "/sidekiq"
+  # mount PgHero::Engine, at: "pghero"
+  # consider placement for Dev only
 
   resources :market_monitors
   resources :tradeable_universes, except: [:show]

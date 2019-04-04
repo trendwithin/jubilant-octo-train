@@ -16,9 +16,11 @@ gem 'exception_handler', '~> 0.8.0.0'
 gem 'devise', '~> 4.5'
 gem 'pundit', '~> 2.0'
 gem 'iex-ruby-client', '~> 0.4.4'
+gem 'scenic', '~> 1.4'
 
 gem 'groupdate', '~> 2.5'
 
+gem 'pghero', '~> 1.7'
 gem 'newrelic_rpm', '~> 3.16', '>= 3.16.0.318'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
