@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class='one-em-padding-top'>
+    <div class="center-block">
+      <%= form_tag materialized_views_refresh_path do %>
+        <%= submit_tag "Refresh Materialized Views" %>
+      <% end %>
+    </div>
+  </div>
+</div>

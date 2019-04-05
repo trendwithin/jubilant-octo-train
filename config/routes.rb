@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'materialized_views/refresh_mat_views'
+  post 'materialized_views/refresh', to: 'materialized_views#refresh_views'
+
+
   get 'market_monitor_google_sheets/index'
 
   root 'static_pages#home'
