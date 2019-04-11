@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reports/fresh_new_highs'
+
   get 'materialized_views/refresh_mat_views'
   post 'materialized_views/refresh', to: 'materialized_views#refresh_views'
 

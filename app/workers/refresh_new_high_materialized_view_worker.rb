@@ -1,7 +1,7 @@
 class RefreshNewHighMaterializedViewWorker < ProcessWorker
   def process
-    FirstOneHundredTwentySixPeriodNewHighReport.refresh
     FirstSixtyThreePeriodNewHighReport.refresh
+    FirstOneHundredTwentySixPeriodNewHighReport.refresh
     FirstTwoHundredFiftyPeriodNewHighReport.refresh
     FirstFiveHundredPeriodNewHighReport.refresh
   end
