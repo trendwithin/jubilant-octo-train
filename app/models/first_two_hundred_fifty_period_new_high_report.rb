@@ -1,4 +1,4 @@
-class TwoHundredFiftyPeriodNewHighReport < ActiveRecord::Base
+class FirstTwoHundredFiftyPeriodNewHighReport < ActiveRecord::Base
   def self.refresh
     Scenic
     .database

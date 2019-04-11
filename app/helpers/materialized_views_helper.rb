@@ -1,0 +1,2 @@
+module MaterializedViewsHelper
+end
