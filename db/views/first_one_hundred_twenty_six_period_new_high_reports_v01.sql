@@ -35,7 +35,7 @@ FROM
     WHERE t.rno <= 126
   ) t2
 WHERE
-  (t2.rno = 250 AND t2.close = second_max)
+  (t2.rno = 126 AND t2.close = second_max)
 AND
   (max > second_max)
 ;
