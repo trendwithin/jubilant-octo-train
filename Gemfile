@@ -13,7 +13,7 @@ gem 'watir', '~> 6.0'
 gem 'redis'
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 gem 'exception_handler', '~> 0.8.0.0'
-gem 'devise', '~> 4.5'
+gem "devise", ">= 4.6.0"
 gem 'pundit', '~> 2.0'
 gem 'iex-ruby-client', '~> 0.4.4'
 gem 'scenic', '~> 1.4'
