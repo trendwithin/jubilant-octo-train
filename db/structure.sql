@@ -282,8 +282,8 @@ CREATE MATERIALIZED VIEW public.first_five_hundred_period_new_high_reports AS
             t.updated_at_1 AS updated_at,
             t.stock_symbol_id,
             t.rno,
-            max(t.high) FILTER (WHERE (t.rno <= 500)) OVER (PARTITION BY t.symbol) AS max,
-            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+            max(t.close) FILTER (WHERE (t.rno <= 500)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.close) FILTER (WHERE ((t.rno >= 2) AND (t.rno <= 500))) OVER (PARTITION BY t.symbol) AS second_max
            FROM ( SELECT stock_symbols.id,
                     stock_symbols.symbol,
                     stock_symbols.company_name,
@@ -311,7 +311,7 @@ CREATE MATERIALIZED VIEW public.first_five_hundred_period_new_high_reports AS
                           GROUP BY stock_symbols_1.symbol
                          HAVING (count(stock_symbols_1.symbol) >= 500)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
           WHERE (t.rno <= 500)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
-  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 250) AND (t2.close = t2.second_max)))
+  WHERE ((t2.rno = 500) AND (t2.close = t2.second_max) AND (t2.max > t2.second_max))
   WITH NO DATA;
 
 
@@ -340,8 +340,8 @@ CREATE MATERIALIZED VIEW public.first_one_hundred_twenty_six_period_new_high_rep
             t.updated_at_1 AS updated_at,
             t.stock_symbol_id,
             t.rno,
-            max(t.high) FILTER (WHERE (t.rno <= 126)) OVER (PARTITION BY t.symbol) AS max,
-            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+            max(t.close) FILTER (WHERE (t.rno <= 126)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.close) FILTER (WHERE ((t.rno >= 2) AND (t.rno <= 126))) OVER (PARTITION BY t.symbol) AS second_max
            FROM ( SELECT stock_symbols.id,
                     stock_symbols.symbol,
                     stock_symbols.company_name,
@@ -369,7 +369,7 @@ CREATE MATERIALIZED VIEW public.first_one_hundred_twenty_six_period_new_high_rep
                           GROUP BY stock_symbols_1.symbol
                          HAVING (count(stock_symbols_1.symbol) >= 126)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
           WHERE (t.rno <= 126)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
-  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 126) AND (t2.close = t2.second_max)))
+  WHERE ((t2.rno = 126) AND (t2.close = t2.second_max) AND (t2.max > t2.second_max))
   WITH NO DATA;
 
 
@@ -398,8 +398,8 @@ CREATE MATERIALIZED VIEW public.first_sixty_three_period_new_high_reports AS
             t.updated_at_1 AS updated_at,
             t.stock_symbol_id,
             t.rno,
-            max(t.high) FILTER (WHERE (t.rno <= 63)) OVER (PARTITION BY t.symbol) AS max,
-            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+            max(t.close) FILTER (WHERE (t.rno <= 63)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.close) FILTER (WHERE ((t.rno >= 2) AND (t.rno <= 63))) OVER (PARTITION BY t.symbol) AS second_max
            FROM ( SELECT stock_symbols.id,
                     stock_symbols.symbol,
                     stock_symbols.company_name,
@@ -427,7 +427,7 @@ CREATE MATERIALIZED VIEW public.first_sixty_three_period_new_high_reports AS
                           GROUP BY stock_symbols_1.symbol
                          HAVING (count(stock_symbols_1.symbol) >= 63)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
           WHERE (t.rno <= 63)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
-  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 63) AND (t2.close = t2.second_max)))
+  WHERE ((t2.rno = 63) AND (t2.close = t2.second_max) AND (t2.max > t2.second_max))
   WITH NO DATA;
 
 
@@ -456,8 +456,8 @@ CREATE MATERIALIZED VIEW public.first_two_hundred_fifty_period_new_high_reports 
             t.updated_at_1 AS updated_at,
             t.stock_symbol_id,
             t.rno,
-            max(t.high) FILTER (WHERE (t.rno <= 250)) OVER (PARTITION BY t.symbol) AS max,
-            max(t.high) OVER (PARTITION BY t.symbol) AS second_max
+            max(t.close) FILTER (WHERE (t.rno <= 250)) OVER (PARTITION BY t.symbol) AS max,
+            max(t.close) FILTER (WHERE ((t.rno >= 2) AND (t.rno <= 250))) OVER (PARTITION BY t.symbol) AS second_max
            FROM ( SELECT stock_symbols.id,
                     stock_symbols.symbol,
                     stock_symbols.company_name,
@@ -485,7 +485,7 @@ CREATE MATERIALIZED VIEW public.first_two_hundred_fifty_period_new_high_reports 
                           GROUP BY stock_symbols_1.symbol
                          HAVING (count(stock_symbols_1.symbol) >= 250)))) t(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno)
           WHERE (t.rno <= 250)) t2(id, symbol, company_name, sector_id, industry_id, created_at, updated_at, id_1, market_close_date, open, high, low, close, volume, net_change, created_at_1, updated_at_1, stock_symbol_id, rno, max, second_max)
-  WHERE (((t2.rno = 1) AND (t2.close = t2.max)) OR ((t2.rno = 250) AND (t2.close = t2.second_max)))
+  WHERE ((t2.rno = 250) AND (t2.close = t2.second_max) AND (t2.max > t2.second_max))
   WITH NO DATA;
 
 
@@ -1072,6 +1072,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190403013341'),
 ('20190404172901'),
 ('20190404172926'),
-('20190404172942');
+('20190404172942'),
+('20190415040226'),
+('20190415041550'),
+('20190415041614'),
+('20190415041633');
 
 
