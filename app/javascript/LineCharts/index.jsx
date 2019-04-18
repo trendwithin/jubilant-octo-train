@@ -30,7 +30,7 @@ class HighLowLineChart extends React.Component {
       title: 'New High :: New Low Differential',
       curveType: 'function',
       legend: { position: 'bottom' },
-      width: 900,
+      width: 1200,
       height: 900,
     };
     return options;

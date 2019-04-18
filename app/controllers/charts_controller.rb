@@ -10,4 +10,7 @@ class ChartsController < ApplicationController
 
   def barcharts
   end
+
+  def four_percent_index
+  end
 end

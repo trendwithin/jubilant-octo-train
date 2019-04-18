@@ -3,7 +3,7 @@ class MaterializedViewsController < ApplicationController
   end
 
   def refresh_views
-    RefreshNewHighMaterializedViewWorker.new.process
+    RefreshNewHighMaterializedViewWorker.perform_async
     head :no_content
   end
 end

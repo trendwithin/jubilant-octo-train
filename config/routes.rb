@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'data_for_charts/thirteen_pct'
 
   get 'charts/thirteen_percent'
+  get 'charts/four_percent_index'
 
   devise_scope :user do
     get "/users/sign_up",  :to => 'static_pages#home'
@@ -54,6 +55,7 @@ Rails.application.routes.draw do
     get 'high_low_data'
     get 'stock_price_data'
     get 'candlestick_charts'
+    get 'four_percent_index_chart_data'
 
   end
 
