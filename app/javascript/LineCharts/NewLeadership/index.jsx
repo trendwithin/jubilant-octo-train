@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import Chart from 'react-google-charts'
-// import { lineChartData } from './data'
 import { transformNewLeadership } from '../../helpers/helper_functions'
 
 class NewLeadershipLineChart extends React.Component {
@@ -28,11 +27,18 @@ class NewLeadershipLineChart extends React.Component {
   chartOptions = () => {
     const options = {
       title: 'New Leadership Differential',
+      vAxis: { title: 'New Leadership Differential' },
+      hAxis: {
+        title: 'Date',
+        format: 'dd/MM/yy',
+        type: 'date',
+      },
       curveType: 'function',
       legend: { position: 'bottom' },
       width: 1200,
       height: 900,
     };
+    return options;
   };
 
   componentDidMount () {
