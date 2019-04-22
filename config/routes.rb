@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get 'google_charts'
     get 'candlestick_charts'
     get 'barcharts'
+    get 'new_leadership'
   end
 
   namespace :data_for_charts do
@@ -56,7 +57,7 @@ Rails.application.routes.draw do
     get 'stock_price_data'
     get 'candlestick_charts'
     get 'four_percent_index_chart_data'
-
+    get 'new_leadership'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
