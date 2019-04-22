@@ -18,3 +18,18 @@ const parseDataItem = (item) => {
   let ath = item.all_time_high - item.all_time_low;
   return [currentDate, oneMonth, threeMonth, sixMonth, fiftyTwo, ath];
 };
+
+export const transformNewLeadership = (data) => {
+  const collection = [];
+  data.forEach((item) => {
+    collection.push(parseNewLeadershipItem(item));
+  });
+  const headers = ['Date', 'Differential'];
+  collection.unshift(headers);
+  return collection;
+};
+
+const parseNewLeadershipItem = (item) => {
+  let currentDate = new Date(item.created_at);
+  return [currentDate, item.positive - item.negative];
+};

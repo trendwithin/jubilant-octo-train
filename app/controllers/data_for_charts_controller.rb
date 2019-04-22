@@ -43,4 +43,9 @@ class DataForChartsController < ApplicationController
 
    render json: price_data
  end
+
+ def new_leadership
+   data = FivePeriodLeader.date_desc(90)
+   render json: data
+ end
 end
