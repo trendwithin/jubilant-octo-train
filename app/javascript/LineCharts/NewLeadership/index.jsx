@@ -40,7 +40,6 @@ class NewLeadershipLineChart extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Chart
         chartType={this.state.chartType}
