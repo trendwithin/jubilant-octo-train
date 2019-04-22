@@ -54,13 +54,11 @@ class FourPercentIndex extends React.Component {
   formatResponse = (data) => {
     const headers = ['Date', 'Four Pct Up', 'Four Pct Down', 'Spy Close'];
     const modifiedArray = data.map(function (cell) {
-      console.log(cell[0]);
       cell[3] = parseFloat(cell[3]);
       return cell;
     });
 
     modifiedArray.unshift(headers);
-    console.log(modifiedArray);
     this.setState({ data: modifiedArray });
   };
 
