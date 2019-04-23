@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     get 'candlestick_charts'
     get 'barcharts'
     get 'new_leadership'
+    get 'momentum_universe'
   end
 
   namespace :data_for_charts do
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
     get 'candlestick_charts'
     get 'four_percent_index_chart_data'
     get 'new_leadership'
+    get 'momentum_universe'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
