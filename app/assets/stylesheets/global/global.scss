@@ -207,6 +207,11 @@ input[type=submit]:active{
 table.center {
   margin-left:auto;
   margin-right:auto;
+  width: 40%;
+
+  a {
+    border-bottom: none;
+  }
 }
 // /* ********************* */
 // /* Padding Margin        */
