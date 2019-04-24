@@ -26,7 +26,6 @@ class MomentumUniverseLineChart extends React.Component {
     });
 
     collection.unshift(headers);
-    console.log(collection);
     this.setState({ data: collection });
   };
 
