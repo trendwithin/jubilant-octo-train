@@ -1,4 +1,16 @@
 #footer {
   background-color: $primary;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  a {
+    border-bottom: none;
+    padding-top: 2px;
+  }
+}
+
+.chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
