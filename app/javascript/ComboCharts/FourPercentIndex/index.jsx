@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import Chart from 'react-google-charts';
 
+import LookBackForm from '../../Forms/LookBackPeriod';
+
 class FourPercentIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,10 @@ class FourPercentIndex extends React.Component {
     };
     this.dataRef = React.createRef();
   }
+
+  onLookbackSubmit = (lookback) => {
+    this.getChartData(lookback);
+  };
 
   chartOptions = () => {
     const options = {
@@ -45,8 +51,9 @@ class FourPercentIndex extends React.Component {
     return options;
   };
 
-  getChartData = async () => {
-    const data = await axios.get('/data_for_charts/four_percent_index_chart_data');
+  getChartData = async (lookback) => {
+    const data = await axios.get
+      ('/data_for_charts/four_percent_index_chart_data?lookback=' + lookback);
     const dataCopy = [...data.data];
     this.formatResponse(dataCopy);
   };
@@ -68,12 +75,15 @@ class FourPercentIndex extends React.Component {
 
   render() {
     return (
-      <Chart
-        chartType={this.state.chartType}
-        options = {this.chartOptions()}
-        loader={ <span className="text-muted">Loading...</span> }
-        data={this.state.data}
-      />
+      <div>
+        <LookBackForm onFormSubmit={this.onLookbackSubmit}/>
+        <Chart
+          chartType={this.state.chartType}
+          options = {this.chartOptions()}
+          loader={ <span className="text-muted">Loading...</span> }
+          data={this.state.data}
+        />
+      </div>
     );
   }
 }

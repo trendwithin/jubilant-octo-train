@@ -19,10 +19,11 @@ class DataForChartsController < ApplicationController
   end
 
   def four_percent_index_chart_data
+    lookback = lookback_period
     spy = StockSymbol.find_by_symbol('SPY')
-    four_pct = MarketMonitor.order_by_date_desc.limit(250).pluck(:market_close_date, :up_four_pct_daily, :down_four_pct_daily)
-    four_pct_down = MarketMonitor.order_by_date_desc.limit(250).pluck(:market_close_date, :down_four_pct_daily)
-    historic_prices = spy.historic_prices.date_desc(250).pluck(:close)
+    four_pct = MarketMonitor.order_by_date_desc.limit("#{lookback}").pluck(:market_close_date, :up_four_pct_daily, :down_four_pct_daily)
+    four_pct_down = MarketMonitor.order_by_date_desc.limit("#{lookback}").pluck(:market_close_date, :down_four_pct_daily)
+    historic_prices = spy.historic_prices.date_desc("#{lookback}").pluck(:close)
     @formatted_results = []
     four_pct.each_index do |index|
       @formatted_results << four_pct[index].push(historic_prices[index])
@@ -50,5 +51,14 @@ class DataForChartsController < ApplicationController
   def momentum_universe
     data = TradeableUniverse.date_desc(90)
     render json: data
+  end
+
+  private
+  def lookback_period
+    if params[:lookback] == 'undefined'
+      250
+    else
+      params[:lookback]
+    end
   end
 end
