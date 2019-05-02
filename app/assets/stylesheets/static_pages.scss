@@ -60,5 +60,9 @@
   color: #000;
 }
 
+.onhover-enlarge-image:hover {
+  vertical-align: middle;
+  transform: scale(1.5, 1.5);
+}
 
 @import "mobile/static_body_content";
