@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     get 'four_percent_index_chart_data'
     get 'new_leadership'
     get 'momentum_universe'
+    get 'primary_ratio'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
