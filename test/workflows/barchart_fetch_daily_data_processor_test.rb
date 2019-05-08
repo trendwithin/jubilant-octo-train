@@ -10,7 +10,7 @@ class BarchartDailyDataProcessorTest < ActiveSupport::TestCase
 
   test 'returns collection of symbols' do
     symbols = @fdd.collect_stock_symbols
-    assert_equal 3, symbols.count
+    assert_equal 4, symbols.count
     assert symbols.include?('FAKE')
     assert symbols.include?('TESTR')
   end
