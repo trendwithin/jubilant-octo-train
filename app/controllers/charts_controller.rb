@@ -16,4 +16,7 @@ class ChartsController < ApplicationController
 
   def primary
   end
+
+  def high_low
+  end
 end

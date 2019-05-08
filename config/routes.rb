@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     get 'new_leadership'
     get 'momentum_universe'
     get 'primary'
+    get 'high_low'
   end
 
   namespace :data_for_charts do
