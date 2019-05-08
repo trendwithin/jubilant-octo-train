@@ -13,4 +13,7 @@ class ChartsController < ApplicationController
 
   def four_percent_index
   end
+
+  def primary
+  end
 end
