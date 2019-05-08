@@ -53,12 +53,13 @@ class DataForChartsController < ApplicationController
     render json: data
   end
 
-  def primary_ratio
-    lookback = 250
-    spy = StockSymbol.find_by_symbol('SPY')
+  def primary_ratio_chart_data
+    lookback = lookback_period
+    market_index = lookback_market_index
+    lookback_index = StockSymbol.find_by_symbol("#{market_index}")
     twenty_five_pct = MarketMonitor.order_by_date_desc.limit("#{lookback}").pluck(:market_close_date, :up_twenty_five_pct_quarter, :down_twenty_five_pct_quarter)
     twenty_five_pct_down = MarketMonitor.order_by_date_desc.limit("#{lookback}").pluck(:market_close_date, :down_twenty_five_pct_quarter)
-    historic_prices = spy.historic_prices.date_desc("#{lookback}").pluck(:close)
+    historic_prices = lookback_index.historic_prices.date_desc("#{lookback}").pluck(:close)
     @formatted_results = []
     twenty_five_pct.each_index do |index|
       @formatted_results << twenty_five_pct[index].push(historic_prices[index])
@@ -74,5 +75,9 @@ class DataForChartsController < ApplicationController
     else
       params[:lookback]
     end
+  end
+
+  def lookback_market_index
+    params[:market_index] == 'undefined' ? 'SPY' : params[:market_index]
   end
 end
