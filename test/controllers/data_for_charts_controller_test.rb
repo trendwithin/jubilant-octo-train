@@ -6,4 +6,9 @@ class DataForChartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
+  test '#primary_ratio returns properly formatted data' do
+    get data_for_charts_primary_ratio_url
+    assert_response :success
+  end
 end

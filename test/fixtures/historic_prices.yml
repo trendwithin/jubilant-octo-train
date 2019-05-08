@@ -17,3 +17,14 @@ aapl_price:
   volume: 54000
   net_change: 0.71
   stock_symbol: aapl
+
+spy_price:
+    market_close_date: 2017-05-01
+    created_at: 2017-05-01
+    open: 168.12
+    high: 168.84
+    low: 168.12
+    close: 168.84
+    volume: 154000
+    net_change: 0.71
+    stock_symbol: spy

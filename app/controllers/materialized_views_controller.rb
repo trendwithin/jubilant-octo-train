@@ -1,4 +1,6 @@
 class MaterializedViewsController < ApplicationController
+  before_action :authenticate_user!
+
   def refresh_mat_views
   end
 

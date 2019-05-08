@@ -17,3 +17,9 @@ aapl:
   company_name: Apple Computers
   industry: computer
   sector: hardward
+
+spy:
+  symbol: SPY
+  company_name: S&P Index
+  industry: ''
+  sector: ''
