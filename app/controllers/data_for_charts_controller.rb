@@ -38,8 +38,10 @@ class DataForChartsController < ApplicationController
   end
 
   def stock_price_data
-    symbol = StockSymbol.find_by_symbol('SPY')
-    price_data = symbol.historic_prices.date_asc(50)
+    lookback = lookback_period
+    market_index = lookback_market_index
+    symbol = StockSymbol.find_by_symbol("#{market_index}")
+    price_data = symbol.historic_prices.date_asc("#{lookback}")
     render json: price_data
   end
 
@@ -68,6 +70,13 @@ class DataForChartsController < ApplicationController
     render json: @formatted_results
   end
 
+  def daily_price_history
+    symbol = StockSymbol.find_by_symbol('SPY')
+    lookback = 250
+    historic_prices = symbol.historic_prices.date_desc("#{lookback}").pluck(:market_close_date, :close)
+    render json: historic_prices
+  end
+
   private
   def lookback_period
     if params[:lookback] == 'undefined'
@@ -79,5 +88,9 @@ class DataForChartsController < ApplicationController
 
   def lookback_market_index
     params[:market_index] == 'undefined' ? 'SPY' : params[:market_index]
+  end
+
+  def fetch_symbol
+    params[:symbol] == 'undefined' ? 'SPY' : params[:symbol]
   end
 end

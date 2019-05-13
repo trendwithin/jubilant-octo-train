@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get 'momentum_universe'
     get 'primary'
     get 'high_low'
+    get 'daily_chart'
   end
 
   namespace :data_for_charts do
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
     get 'new_leadership'
     get 'momentum_universe'
     get 'primary_ratio_chart_data'
+    get 'daily_price_history'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

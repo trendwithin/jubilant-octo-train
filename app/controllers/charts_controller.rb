@@ -19,4 +19,7 @@ class ChartsController < ApplicationController
 
   def high_low
   end
+
+  def daily_chart
+  end
 end
