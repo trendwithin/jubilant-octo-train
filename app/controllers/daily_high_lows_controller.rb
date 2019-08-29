@@ -6,6 +6,11 @@ class DailyHighLowsController < ApplicationController
   def index
     @daily_high_lows = DailyHighLow.all.order_by_date_desc
     authorize @daily_high_lows
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @daily_high_lows.to_csv, filename: "daily_high_low-#{Date.today}.csv" }
+    end
   end
 
   def new

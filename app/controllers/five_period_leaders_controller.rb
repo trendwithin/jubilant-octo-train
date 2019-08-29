@@ -4,6 +4,11 @@ class FivePeriodLeadersController < ApplicationController
 
   def index
     @five_period_leaders = FivePeriodLeader.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @five_period_leaders.to_csv, filename: "five_period_leader-#{Date.today}.csv" }
+    end
   end
 
   def new

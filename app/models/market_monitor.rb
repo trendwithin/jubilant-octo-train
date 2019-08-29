@@ -34,4 +34,18 @@ class MarketMonitor < ApplicationRecord
     thirteen_percent_down.merge!(vals_two)
     @data = thirteen_percent_up, thirteen_percent_down
   end
+
+  def self.to_csv
+    attributes = %w{ id market_close_date up_four_pct_daily down_four_pct_daily up_twenty_five_pct_quarter
+      down_twenty_five_pct_quarter up_twenty_five_pct_month down_twenty_five_pct_month up_thirteen_pct_six_weeks
+      down_thirteen_pct_six_weeks up_fifty_pct_month down_fifty_pct_month total_stocks created_at updated_at }
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |monitor|
+        csv << attributes.map { |attr| monitor.send(attr) }
+      end
+    end
+  end
 end
