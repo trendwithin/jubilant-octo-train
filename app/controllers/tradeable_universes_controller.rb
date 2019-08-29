@@ -5,6 +5,11 @@ class TradeableUniversesController < ApplicationController
   def index
     @tradeable_universes = TradeableUniverse.all
     authorize @tradeable_universes
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tradeable_universes.to_csv, filename: "tradeable_universe-#{Date.today}.csv" }
+    end
   end
 
   def new

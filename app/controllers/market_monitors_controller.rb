@@ -5,6 +5,11 @@ class MarketMonitorsController < ApplicationController
   def index
     @market_monitors = MarketMonitor.limit(250).order_by_date_desc
     authorize @market_monitors
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @market_monitors.to_csv, filename: "market_monitor-#{Date.today}.csv" }
+    end
   end
 
   def show
