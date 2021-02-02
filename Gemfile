@@ -7,7 +7,7 @@ end
 
 # Project Specific Gems
 gem 'figaro', '~> 1.1', '>= 1.1.1'
-gem 'mechanize', '~> 2.7', '>= 2.7.5'
+gem 'mechanize', '~> 2.7'
 gem 'sprockets', '~> 3.5', '>= 3.5.2'
 gem 'watir', '~> 6.0'
 gem 'redis'
