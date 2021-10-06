@@ -11,7 +11,7 @@ gem 'mechanize', '~> 2.7', '>= 2.7.5'
 gem 'sprockets', '~> 3.5', '>= 3.5.2'
 gem 'watir', '~> 6.0'
 gem 'redis'
-gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+gem 'sidekiq', '~> 5.2'
 gem 'exception_handler', '~> 0.8.0.0'
 gem "devise", ">= 4.6.0"
 gem 'pundit', '~> 2.0'
